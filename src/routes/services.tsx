@@ -2,6 +2,10 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { Globe, Code2, Wrench, ArrowRight, Check, Smartphone, Search, Database } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import salonImg from "@/assets/industry-salon.jpg";
+import restaurantImg from "@/assets/industry-restaurant.jpg";
+import bnbImg from "@/assets/industry-bnb.jpg";
+import logisticsImg from "@/assets/industry-logistics.jpg";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -35,6 +39,13 @@ function Services() {
       body: "We don't disappear after launch. Monitoring, updates, security patching and ongoing feature work on a steady cadence.",
       points: ["24/7 monitoring", "Security updates", "Bug fixes & tweaks", "Monthly retainers"],
     },
+  ];
+
+  const pricing = [
+    { industry: "Salons", price: "R1 800", image: salonImg, blurb: "Booking-ready sites for stylists and beauty studios." },
+    { industry: "Restaurants", price: "R2 650", image: restaurantImg, blurb: "Menus, reservations and brand storytelling." },
+    { industry: "BnBs & Guesthouses", price: "R3 700", image: bnbImg, blurb: "Showcase rooms and capture direct bookings." },
+    { industry: "Logistics Companies", price: "R3 900", image: logisticsImg, blurb: "Fleet, services and quote-request workflows." },
   ];
 
   const extras = [
@@ -80,6 +91,53 @@ function Services() {
               <div className="absolute -bottom-16 -right-16 h-40 w-40 rounded-full bg-accent/10 blur-3xl transition group-hover:bg-accent/20" />
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="border-t border-border/60 bg-background">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="flex flex-col items-center text-center">
+            <div className="font-mono text-xs uppercase tracking-widest text-accent">Pricing</div>
+            <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold tracking-tight">
+              Websites by <span className="text-gradient-purple">industry</span>
+            </h2>
+            <p className="mt-4 max-w-2xl text-muted-foreground">
+              Transparent starting prices for the industries we know best. Every build is custom — these are launch-ready packages.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {pricing.map((p) => (
+              <article
+                key={p.industry}
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 transition hover:border-accent/60 hover:bg-card"
+              >
+                <div className="relative aspect-[4/3] overflow-hidden">
+                  <img
+                    src={p.image}
+                    alt={`${p.industry} website example by Buildify Co.`}
+                    width={800}
+                    height={600}
+                    loading="lazy"
+                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                </div>
+                <div className="flex flex-1 flex-col p-6">
+                  <h3 className="font-display text-xl font-bold">{p.industry}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.blurb}</p>
+                  <div className="mt-6 flex items-end justify-between border-t border-border/60 pt-4">
+                    <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">From</span>
+                    <span className="font-display text-3xl font-bold text-gradient-purple">{p.price}</span>
+                  </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          <p className="mt-10 text-center text-xs text-muted-foreground">
+            Prices exclude domain &amp; hosting. Custom industries quoted on request.
+          </p>
         </div>
       </section>
 
