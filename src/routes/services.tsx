@@ -44,7 +44,7 @@ function Services() {
 
   const pricing = [
     { industry: "Salons", price: "R1 800", image: salonImg, blurb: "Booking-ready sites for stylists and beauty studios." },
-    { industry: "Dr Website", price: "R2 400", image: doctorImg, blurb: "Patient-friendly sites for doctors and private practices." },
+    { industry: "Healthcare Professional Website", price: "R2 400", image: doctorImg, blurb: "Patient-friendly sites for doctors and private practices." },
     { industry: "Restaurants", price: "R2 650", image: restaurantImg, blurb: "Menus, reservations and brand storytelling." },
     { industry: "BnBs & Guesthouses", price: "R3 700", image: bnbImg, blurb: "Showcase rooms and capture direct bookings." },
     { industry: "Logistics Companies", price: "R3 900", image: logisticsImg, blurb: "Fleet, services and quote-request workflows." },
