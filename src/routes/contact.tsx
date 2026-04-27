@@ -1,23 +1,32 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Phone, Mail, Send, MapPin, Clock } from "lucide-react";
+import { Phone, Mail, Send, MapPin, Clock, MessageCircle } from "lucide-react";
 import { useState } from "react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
+type ContactSearch = { service?: string };
+
 export const Route = createFileRoute("/contact")({
+  validateSearch: (search: Record<string, unknown>): ContactSearch => ({
+    service: typeof search.service === "string" ? search.service : undefined,
+  }),
   head: () => ({
     meta: [
       { title: "Contact — Buildify Co." },
-      { name: "description", content: "Get in touch with Buildify Co. — call 083 335 9097 or email songezogwabvu@gmail.com." },
+      { name: "description", content: "Get in touch with Buildify Co. — call or WhatsApp 083 335 9097, or email songezogwabvu@gmail.com." },
       { property: "og:title", content: "Contact Buildify Co." },
-      { property: "og:description", content: "Reach Buildify Co. by phone or email." },
+      { property: "og:description", content: "Reach Buildify Co. by phone, WhatsApp or email." },
     ],
   }),
   component: Contact,
 });
 
 function Contact() {
+  const { service } = Route.useSearch();
   const [sent, setSent] = useState(false);
+  const whatsappHref = service
+    ? `https://wa.me/27833359097?text=${encodeURIComponent(`Hi Buildify Co., I'm interested in: ${service}`)}`
+    : "https://wa.me/27833359097";
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -39,7 +48,23 @@ function Contact() {
       <section className="mx-auto max-w-7xl px-6 py-16 md:py-24">
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2 space-y-6">
-            <a href="tel:0833359097" className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:border-accent/50 hover:bg-card">
+            <a
+              href={whatsappHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-start gap-4 rounded-2xl border border-accent/40 bg-accent/10 p-6 transition hover:border-accent hover:bg-accent/15"
+            >
+              <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-accent shadow-accent-glow">
+                <MessageCircle className="h-5 w-5 text-accent-foreground" />
+              </div>
+              <div>
+                <div className="font-mono text-xs uppercase tracking-widest text-accent">WhatsApp</div>
+                <div className="mt-1 font-display text-xl font-bold">+27 83 335 9097</div>
+                <div className="mt-1 text-sm text-muted-foreground">Chat with us instantly</div>
+              </div>
+            </a>
+
+            <a href="tel:+27833359097" className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:border-accent/50 hover:bg-card">
               <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-primary shadow-glow">
                 <Phone className="h-5 w-5 text-primary-foreground" />
               </div>
@@ -82,6 +107,12 @@ function Contact() {
                 <Field label="Your name" id="name" required />
                 <Field label="Email" id="email" type="email" required />
               </div>
+              <Field
+                label="Service of interest"
+                id="service"
+                defaultValue={service ?? ""}
+                placeholder="e.g. Salons website (R1 800)"
+              />
               <Field label="Subject" id="subject" />
               <div>
                 <label htmlFor="message" className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Message</label>
@@ -89,6 +120,7 @@ function Contact() {
                   id="message"
                   rows={5}
                   required
+                  defaultValue={service ? `Hi Buildify Co., I'm interested in your ${service}. Please get in touch to discuss.` : ""}
                   className="mt-2 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 resize-none"
                   placeholder="Tell us about your project..."
                 />
@@ -110,7 +142,21 @@ function Contact() {
   );
 }
 
-function Field({ label, id, type = "text", required = false }: { label: string; id: string; type?: string; required?: boolean }) {
+function Field({
+  label,
+  id,
+  type = "text",
+  required = false,
+  defaultValue,
+  placeholder,
+}: {
+  label: string;
+  id: string;
+  type?: string;
+  required?: boolean;
+  defaultValue?: string;
+  placeholder?: string;
+}) {
   return (
     <div>
       <label htmlFor={id} className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{label}</label>
@@ -118,6 +164,8 @@ function Field({ label, id, type = "text", required = false }: { label: string; 
         id={id}
         type={type}
         required={required}
+        defaultValue={defaultValue}
+        placeholder={placeholder}
         className="mt-2 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
       />
     </div>
