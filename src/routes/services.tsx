@@ -6,6 +6,7 @@ import salonImg from "@/assets/industry-salon.jpg";
 import restaurantImg from "@/assets/industry-restaurant.jpg";
 import bnbImg from "@/assets/industry-bnb.jpg";
 import logisticsImg from "@/assets/industry-logistics.jpg";
+import doctorImg from "@/assets/industry-doctor.jpg";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
@@ -43,6 +44,7 @@ function Services() {
 
   const pricing = [
     { industry: "Salons", price: "R1 800", image: salonImg, blurb: "Booking-ready sites for stylists and beauty studios." },
+    { industry: "Dr Website", price: "R2 400", image: doctorImg, blurb: "Patient-friendly sites for doctors and private practices." },
     { industry: "Restaurants", price: "R2 650", image: restaurantImg, blurb: "Menus, reservations and brand storytelling." },
     { industry: "BnBs & Guesthouses", price: "R3 700", image: bnbImg, blurb: "Showcase rooms and capture direct bookings." },
     { industry: "Logistics Companies", price: "R3 900", image: logisticsImg, blurb: "Fleet, services and quote-request workflows." },
@@ -74,7 +76,12 @@ function Services() {
       <section className="mx-auto max-w-7xl px-6 py-20">
         <div className="grid gap-6 lg:grid-cols-3">
           {main.map((s) => (
-            <article key={s.title} className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 p-8 transition hover:border-accent/50 hover:bg-card">
+            <Link
+              key={s.title}
+              to="/contact"
+              search={{ service: s.title }}
+              className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 p-8 transition hover:border-accent/50 hover:bg-card"
+            >
               <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-primary shadow-glow">
                 <s.icon className="h-7 w-7 text-primary-foreground" />
               </div>
@@ -88,8 +95,11 @@ function Services() {
                   </li>
                 ))}
               </ul>
+              <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent">
+                Request this service <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </div>
               <div className="absolute -bottom-16 -right-16 h-40 w-40 rounded-full bg-accent/10 blur-3xl transition group-hover:bg-accent/20" />
-            </article>
+            </Link>
           ))}
         </div>
       </section>
@@ -108,8 +118,10 @@ function Services() {
 
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {pricing.map((p) => (
-              <article
+              <Link
                 key={p.industry}
+                to="/contact"
+                search={{ service: `${p.industry} website (${p.price})` }}
                 className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 transition hover:border-accent/60 hover:bg-card"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
@@ -131,7 +143,7 @@ function Services() {
                     <span className="font-display text-3xl font-bold text-gradient-purple">{p.price}</span>
                   </div>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
 
