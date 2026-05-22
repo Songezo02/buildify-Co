@@ -49,7 +49,7 @@ export function SplashLogo() {
           </div>
           <div
             className="mt-3 font-mono text-xs uppercase tracking-[0.4em] text-muted-foreground animate-letter-rise"
-            style={{ animationDelay: "2.8s" }}
+            style={{ animationDelay: "2.6s" }}
           >
             We build. You grow.
           </div>
