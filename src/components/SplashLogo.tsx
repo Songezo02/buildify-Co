@@ -4,7 +4,7 @@ export function SplashLogo() {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setHidden(true), 10000);
+    const t = setTimeout(() => setHidden(true), 5500);
     return () => clearTimeout(t);
   }, []);
 
@@ -49,7 +49,7 @@ export function SplashLogo() {
           </div>
           <div
             className="mt-3 font-mono text-xs uppercase tracking-[0.4em] text-muted-foreground animate-letter-rise"
-            style={{ animationDelay: "7s" }}
+            style={{ animationDelay: "2.8s" }}
           >
             We build. You grow.
           </div>
