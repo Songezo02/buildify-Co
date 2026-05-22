@@ -4,7 +4,7 @@ export function SplashLogo() {
   const [hidden, setHidden] = useState(false);
 
   useEffect(() => {
-    const t = setTimeout(() => setHidden(true), 10000);
+    const t = setTimeout(() => setHidden(true), 5500);
     return () => clearTimeout(t);
   }, []);
 
