@@ -1,6 +1,8 @@
 import { Outlet, Link, createRootRoute, HeadContent, Scripts } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { IconScrollReveal } from "@/components/IconScrollReveal";
+
 
 function NotFoundComponent() {
   return (
@@ -65,5 +67,10 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  return <Outlet />;
+  return (
+    <>
+      <IconScrollReveal />
+      <Outlet />
+    </>
+  );
 }
