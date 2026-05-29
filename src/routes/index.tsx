@@ -3,6 +3,7 @@ import { ArrowRight, Code2, Globe, Wrench, Sparkles, Shield, Zap } from "lucide-
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SplashLogo } from "@/components/SplashLogo";
+import { BuildingBackground } from "@/components/BuildingBackground";
 
 export const Route = createFileRoute("/")({
   head: () => ({
