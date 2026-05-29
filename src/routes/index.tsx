@@ -33,56 +33,58 @@ function Home() {
 
 function Hero() {
   return (
-    <section className="relative overflow-hidden bg-hero-gradient">
-      <div className="grid-bg absolute inset-0 opacity-50" />
-      <BuildingBackground />
-      <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-28 md:pt-32 md:pb-40">
+    <section className="relative bg-hero-gradient">
+      <div className="relative overflow-hidden">
+        <BuildingBackground />
+        <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-28 md:pt-32 md:pb-40">
+          <div className="flex flex-col items-center text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-1.5 text-xs font-mono uppercase tracking-widest text-muted-foreground backdrop-blur">
+              <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+              Now taking new projects
+            </div>
 
-        <div className="flex flex-col items-center text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-1.5 text-xs font-mono uppercase tracking-widest text-muted-foreground backdrop-blur">
-            <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
-            Now taking new projects
+            <h1 className="mt-8 font-display text-[clamp(2.75rem,9vw,7rem)] font-bold leading-[0.95] tracking-tighter text-balance">
+              <span className="text-gradient">WE BUILD.</span>
+              <br />
+              <span className="text-gradient-purple">YOU GROW.</span>
+            </h1>
+
+            <p className="mt-8 max-w-2xl text-lg text-white/85 leading-relaxed">
+              Buildify Co. crafts high-performance websites and applications — then maintains them so your business never stops shipping.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow transition hover:scale-105"
+              >
+                Get Started
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-7 py-4 text-base font-medium text-foreground transition hover:border-accent/50 hover:text-accent backdrop-blur"
+              >
+                Explore Services
+              </Link>
+            </div>
           </div>
+        </div>
+      </div>
 
-          <h1 className="mt-8 font-display text-[clamp(2.75rem,9vw,7rem)] font-bold leading-[0.95] tracking-tighter text-balance">
-            <span className="text-gradient">WE BUILD.</span>
-            <br />
-            <span className="text-gradient-purple">YOU GROW.</span>
-          </h1>
-
-          <p className="mt-8 max-w-2xl text-lg text-muted-foreground leading-relaxed">
-            Buildify Co. crafts high-performance websites and applications — then maintains them so your business never stops shipping.
-          </p>
-
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
-            <Link
-              to="/contact"
-              className="group inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow transition hover:scale-105"
-            >
-              Get Started
-              <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-            </Link>
-            <Link
-              to="/services"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-7 py-4 text-base font-medium text-foreground transition hover:border-accent/50 hover:text-accent"
-            >
-              Explore Services
-            </Link>
-          </div>
-
-          <div className="mt-20 grid w-full max-w-4xl gap-4 sm:grid-cols-3">
-            {[
-              { icon: Zap, label: "Fast delivery", v: "2–4 weeks" },
-              { icon: Shield, label: "Always maintained", v: "24/7" },
-              { icon: Sparkles, label: "Modern stack", v: "2026 ready" },
-            ].map((s) => (
-              <div key={s.label} className="rounded-2xl border border-border bg-card/40 p-5 backdrop-blur">
-                <s.icon className="h-5 w-5 text-accent" />
-                <div className="mt-3 font-display text-2xl font-bold">{s.v}</div>
-                <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">{s.label}</div>
-              </div>
-            ))}
-          </div>
+      <div className="relative mx-auto max-w-7xl px-6 pb-20">
+        <div className="grid w-full max-w-4xl mx-auto gap-4 sm:grid-cols-3 -mt-10">
+          {[
+            { icon: Zap, label: "Fast delivery", v: "2–4 weeks" },
+            { icon: Shield, label: "Always maintained", v: "24/7" },
+            { icon: Sparkles, label: "Modern stack", v: "2026 ready" },
+          ].map((s) => (
+            <div key={s.label} className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur">
+              <s.icon className="h-5 w-5 text-accent" />
+              <div className="mt-3 font-display text-2xl font-bold">{s.v}</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">{s.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
