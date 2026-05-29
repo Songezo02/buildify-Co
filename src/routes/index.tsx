@@ -3,6 +3,7 @@ import { ArrowRight, Code2, Globe, Wrench, Sparkles, Shield, Zap } from "lucide-
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SplashLogo } from "@/components/SplashLogo";
+import { BuildingBackground } from "@/components/BuildingBackground";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -34,7 +35,9 @@ function Hero() {
   return (
     <section className="relative overflow-hidden bg-hero-gradient">
       <div className="grid-bg absolute inset-0 opacity-50" />
+      <BuildingBackground />
       <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-28 md:pt-32 md:pb-40">
+
         <div className="flex flex-col items-center text-center">
           <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-1.5 text-xs font-mono uppercase tracking-widest text-muted-foreground backdrop-blur">
             <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
