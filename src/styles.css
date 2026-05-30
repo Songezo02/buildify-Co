@@ -206,12 +206,70 @@
   opacity: 0;
   transform: translateY(8px);
 }
+
+/* Scroll-reveal + hover treatment for stat / feature cards */
+.reveal-card {
+  --reveal-index: 0;
+  opacity: 0;
+  transform: translateY(24px) scale(0.95);
+  transition:
+    opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s ease,
+    box-shadow 0.4s ease,
+    background-color 0.4s ease;
+  transition-delay: calc(var(--reveal-index) * 110ms);
+  will-change: opacity, transform;
+}
+.reveal-card.reveal-card-in {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.reveal-card.reveal-card-out {
+  opacity: 0;
+  transform: translateY(16px) scale(0.97);
+  transition-delay: 0ms;
+}
+.reveal-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  border-color: oklch(0.78 0.2 155 / 0.55);
+  box-shadow:
+    0 20px 50px -20px oklch(0.55 0.22 295 / 0.45),
+    0 0 24px oklch(0.78 0.2 155 / 0.25);
+}
+
+/* Soft glowing pulse for icons inside revealed cards */
+@keyframes icon-glow-pulse {
+  0%, 100% {
+    filter: drop-shadow(0 0 0 oklch(0.78 0.2 155 / 0));
+    transform: translateY(0);
+  }
+  50% {
+    filter: drop-shadow(0 0 10px oklch(0.78 0.2 155 / 0.55));
+    transform: translateY(-2px);
+  }
+}
+.reveal-card.reveal-card-in svg.lucide {
+  animation: icon-glow-pulse 4.5s ease-in-out infinite;
+}
+.reveal-card:hover svg.lucide {
+  animation-duration: 2.2s;
+  filter: drop-shadow(0 0 12px oklch(0.78 0.2 155 / 0.7));
+}
+
 @media (prefers-reduced-motion: reduce) {
   .icon-reveal,
   .icon-reveal.icon-reveal-in,
-  .icon-reveal.icon-reveal-out {
+  .icon-reveal.icon-reveal-out,
+  .reveal-card,
+  .reveal-card.reveal-card-in,
+  .reveal-card.reveal-card-out {
     opacity: 1;
     transform: none;
     transition: none;
   }
+  .reveal-card.reveal-card-in svg.lucide {
+    animation: none;
+  }
 }
+
