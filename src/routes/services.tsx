@@ -75,7 +75,7 @@ function Services() {
           <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background" />
         </div>
-        <div className="relative mx-auto max-w-5xl px-6 py-24 md:py-32 text-center">
+        <div className="relative mx-auto max-w-5xl px-6 py-16 md:py-20 text-center">
           <div className="font-mono text-xs uppercase tracking-widest text-accent">Services</div>
           <h1 className="mt-4 font-display text-5xl md:text-7xl font-bold tracking-tighter text-balance text-white">
             Everything you need <span className="text-gradient-purple">to ship.</span>
