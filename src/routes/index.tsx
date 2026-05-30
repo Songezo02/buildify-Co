@@ -79,7 +79,7 @@ function Hero() {
             { icon: Shield, label: "Always maintained", v: "24/7" },
             { icon: Sparkles, label: "Modern stack", v: "2026 ready" },
           ].map((s) => (
-            <div key={s.label} className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur">
+            <div key={s.label} data-reveal-card className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur">
               <s.icon className="h-5 w-5 text-accent" />
               <div className="mt-3 font-display text-2xl font-bold">{s.v}</div>
               <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">{s.label}</div>
@@ -143,7 +143,7 @@ function ServicesTeaser() {
       </div>
       <div className="grid gap-6 md:grid-cols-3">
         {services.map((s) => (
-          <div key={s.title} className="group relative overflow-hidden rounded-2xl border border-border bg-card/40 p-8 transition hover:border-accent/50 hover:bg-card">
+          <div key={s.title} data-reveal-card className="group relative overflow-hidden rounded-2xl border border-border bg-card/40 p-8 transition hover:bg-card">
             <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-primary shadow-glow">
               <s.icon className="h-6 w-6 text-primary-foreground" />
             </div>
