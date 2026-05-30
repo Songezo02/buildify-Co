@@ -74,7 +74,7 @@ function About() {
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-center">What we value</h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {values.map((v) => (
-              <div key={v.title} className="rounded-2xl border border-border bg-card/60 p-8 text-center">
+              <div key={v.title} data-reveal-card className="rounded-2xl border border-border bg-card/60 p-8 text-center">
                 <div className="mx-auto grid h-12 w-12 place-items-center rounded-xl bg-gradient-primary shadow-glow">
                   <v.icon className="h-6 w-6 text-primary-foreground" />
                 </div>

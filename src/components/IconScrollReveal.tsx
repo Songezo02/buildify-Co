@@ -2,9 +2,10 @@ import { useEffect } from "react";
 import { useRouter } from "@tanstack/react-router";
 
 /**
- * Observes all Lucide icons on the page and applies a smooth
- * fade + slight upward translate as they enter/leave the viewport.
- * Re-scans on route changes so newly mounted icons are picked up.
+ * Observes Lucide icons and any `[data-reveal-card]` elements on the page
+ * and applies a smooth fade + translate (+ scale for cards) as they
+ * enter/leave the viewport. Re-scans on route changes so newly mounted
+ * elements are picked up.
  */
 export function IconScrollReveal() {
   const router = useRouter();
@@ -13,12 +14,11 @@ export function IconScrollReveal() {
     if (typeof window === "undefined") return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    const observer = new IntersectionObserver(
+    const iconObserver = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry, i) => {
           const el = entry.target as HTMLElement;
           if (entry.isIntersecting) {
-            // small stagger based on position within this batch
             el.style.transitionDelay = `${Math.min(i * 60, 240)}ms`;
             el.classList.add("icon-reveal-in");
             el.classList.remove("icon-reveal-out");
@@ -32,13 +32,42 @@ export function IconScrollReveal() {
       { threshold: 0.15, rootMargin: "0px 0px -40px 0px" },
     );
 
+    const cardObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const el = entry.target as HTMLElement;
+          if (entry.isIntersecting) {
+            el.classList.add("reveal-card-in");
+            el.classList.remove("reveal-card-out");
+          } else {
+            el.classList.remove("reveal-card-in");
+            el.classList.add("reveal-card-out");
+          }
+        });
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -60px 0px" },
+    );
+
     const scan = () => {
-      const icons = document.querySelectorAll<HTMLElement>("svg.lucide");
-      icons.forEach((icon) => {
+      document.querySelectorAll<HTMLElement>("svg.lucide").forEach((icon) => {
         if (icon.dataset.revealBound === "1") return;
         icon.dataset.revealBound = "1";
         icon.classList.add("icon-reveal");
-        observer.observe(icon);
+        iconObserver.observe(icon);
+      });
+
+      document.querySelectorAll<HTMLElement>("[data-reveal-card]").forEach((card) => {
+        if (card.dataset.revealBound === "1") return;
+        card.dataset.revealBound = "1";
+        card.classList.add("reveal-card");
+        // compute index among siblings sharing the same parent to stagger nicely
+        const parent = card.parentElement;
+        const siblings = parent
+          ? Array.from(parent.querySelectorAll<HTMLElement>("[data-reveal-card]"))
+          : [card];
+        const idx = siblings.indexOf(card);
+        card.style.setProperty("--reveal-index", String(idx >= 0 ? idx : 0));
+        cardObserver.observe(card);
       });
     };
 
@@ -47,12 +76,12 @@ export function IconScrollReveal() {
     mo.observe(document.body, { childList: true, subtree: true });
 
     const unsub = router.subscribe("onResolved", () => {
-      // give the new route a tick to mount
       setTimeout(scan, 30);
     });
 
     return () => {
-      observer.disconnect();
+      iconObserver.disconnect();
+      cardObserver.disconnect();
       mo.disconnect();
       unsub();
     };

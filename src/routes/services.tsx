@@ -80,7 +80,8 @@ function Services() {
               key={s.title}
               to="/contact"
               search={{ service: s.title }}
-              className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 p-8 transition hover:border-accent/50 hover:bg-card"
+              data-reveal-card
+              className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 p-8 transition hover:bg-card"
             >
               <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-primary shadow-glow">
                 <s.icon className="h-7 w-7 text-primary-foreground" />
@@ -122,7 +123,8 @@ function Services() {
                 key={p.industry}
                 to="/contact"
                 search={{ service: `${p.industry} website (${p.price})` }}
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 transition hover:border-accent/60 hover:bg-card"
+                data-reveal-card
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 transition hover:bg-card"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -158,7 +160,7 @@ function Services() {
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-center">Standard with every project</h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {extras.map((e) => (
-              <div key={e.title} className="rounded-2xl border border-border bg-background/40 p-6">
+              <div key={e.title} data-reveal-card className="rounded-2xl border border-border bg-background/40 p-6">
                 <e.icon className="h-6 w-6 text-accent" />
                 <h3 className="mt-4 font-display text-xl font-bold">{e.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{e.body}</p>

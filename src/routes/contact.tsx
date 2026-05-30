@@ -52,7 +52,8 @@ function Contact() {
               href={whatsappHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-start gap-4 rounded-2xl border border-accent/40 bg-accent/10 p-6 transition hover:border-accent hover:bg-accent/15"
+              data-reveal-card
+              className="flex items-start gap-4 rounded-2xl border border-accent/40 bg-accent/10 p-6 transition hover:bg-accent/15"
             >
               <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-accent shadow-accent-glow">
                 <MessageCircle className="h-5 w-5 text-accent-foreground" />
@@ -64,7 +65,7 @@ function Contact() {
               </div>
             </a>
 
-            <a href="tel:+27833359097" className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:border-accent/50 hover:bg-card">
+            <a href="tel:+27833359097" data-reveal-card className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:bg-card">
               <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-primary shadow-glow">
                 <Phone className="h-5 w-5 text-primary-foreground" />
               </div>
@@ -75,7 +76,7 @@ function Contact() {
               </div>
             </a>
 
-            <a href="mailto:songezogwabvu@gmail.com" className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:border-accent/50 hover:bg-card">
+            <a href="mailto:songezogwabvu@gmail.com" data-reveal-card className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:bg-card">
               <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-accent shadow-accent-glow">
                 <Mail className="h-5 w-5 text-accent-foreground" />
               </div>
