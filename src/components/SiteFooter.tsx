@@ -11,7 +11,7 @@ export function SiteFooter() {
             <Link to="/" className="flex items-center gap-2">
               <LogoMark className="h-9 w-9" />
               <span className="font-display text-xl font-bold">
-                Buildify<span className="text-accent">.</span>
+                Buildify Co<span className="text-accent">.</span>
               </span>
             </Link>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
