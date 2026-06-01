@@ -148,6 +148,7 @@ function Contact() {
           </div>
         </div>
       </section>
+      </div>
 
       <SiteFooter />
     </div>
