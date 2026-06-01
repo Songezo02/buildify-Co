@@ -32,7 +32,7 @@ function Contact() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-      <section className="relative overflow-hidden">
+      <div className="relative overflow-hidden">
         <video
           className="absolute inset-0 h-full w-full object-cover"
           src="/ContactPage.mp4"
@@ -45,7 +45,8 @@ function Contact() {
         />
         <div className="absolute inset-0 bg-black/60" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background" />
-        <div className="relative mx-auto max-w-5xl px-6 py-20 md:py-28 text-center">
+
+        <section className="relative mx-auto max-w-5xl px-6 py-20 md:py-28 text-center">
           <div className="font-mono text-xs uppercase tracking-widest text-accent">Contact</div>
           <h1 className="mt-4 font-display text-5xl md:text-7xl font-bold tracking-tighter text-balance text-white">
             Let's <span className="text-gradient-purple">talk.</span>
@@ -53,10 +54,9 @@ function Contact() {
           <p className="mt-6 text-lg text-white/85 max-w-xl mx-auto">
             Whether it's a brand-new build or help maintaining an existing product — we'd love to hear from you.
           </p>
-        </div>
-      </section>
+        </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-16 md:py-24">
+        <section className="relative mx-auto max-w-7xl px-6 pb-16 md:pb-24 pt-0">
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2 space-y-6">
             <a
@@ -148,6 +148,7 @@ function Contact() {
           </div>
         </div>
       </section>
+      </div>
 
       <SiteFooter />
     </div>
