@@ -13,7 +13,7 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Buildify Co." },
-      { name: "description", content: "Get in touch with Buildify Co. — call or WhatsApp 083 335 9097, or email songezogwabvu@gmail.com." },
+      { name: "description", content: "Get in touch with Buildify Co. — call or WhatsApp 083 335 9097, or email songezogwabavu@gmail.com." },
       { property: "og:title", content: "Contact Buildify Co." },
       { property: "og:description", content: "Reach Buildify Co. by phone, WhatsApp or email." },
     ],
@@ -87,13 +87,13 @@ function Contact() {
               </div>
             </a>
 
-            <a href="mailto:songezogwabvu@gmail.com" data-reveal-card className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:bg-card">
+            <a href="mailto:songezogwabavu@gmail.com" data-reveal-card className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:bg-card">
               <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-accent shadow-accent-glow">
                 <Mail className="h-5 w-5 text-accent-foreground" />
               </div>
               <div className="min-w-0">
                 <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Email</div>
-                <div className="mt-1 font-display text-xl font-bold break-all">songezogwabvu@gmail.com</div>
+                <div className="mt-1 font-display text-xl font-bold break-all">songezogwabavu@gmail.com</div>
                 <div className="mt-1 text-sm text-muted-foreground">Replies within 1 business day</div>
               </div>
             </a>
