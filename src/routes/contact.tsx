@@ -32,14 +32,25 @@ function Contact() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-      <section className="relative overflow-hidden bg-hero-gradient">
-        <div className="grid-bg absolute inset-0 opacity-40" />
+      <section className="relative overflow-hidden">
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          src="/ContactPage.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          style={{ filter: "brightness(0.65) contrast(1.1)" }}
+        />
+        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background" />
         <div className="relative mx-auto max-w-5xl px-6 py-20 md:py-28 text-center">
           <div className="font-mono text-xs uppercase tracking-widest text-accent">Contact</div>
-          <h1 className="mt-4 font-display text-5xl md:text-7xl font-bold tracking-tighter text-balance">
+          <h1 className="mt-4 font-display text-5xl md:text-7xl font-bold tracking-tighter text-balance text-white">
             Let's <span className="text-gradient-purple">talk.</span>
           </h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto">
+          <p className="mt-6 text-lg text-white/85 max-w-xl mx-auto">
             Whether it's a brand-new build or help maintaining an existing product — we'd love to hear from you.
           </p>
         </div>
