@@ -50,7 +50,7 @@ export function SiteFooter() {
               </li>
               <li className="flex items-center gap-2">
                 <Mail className="h-4 w-4 text-accent" />
-                <a href="mailto:songezogwabvu@gmail.com" className="hover:text-accent break-all">songezogwabvu@gmail.com</a>
+                <a href="mailto:songezogwabavu@gmail.com" className="hover:text-accent break-all">songezogwabavu@gmail.com</a>
               </li>
             </ul>
           </div>
