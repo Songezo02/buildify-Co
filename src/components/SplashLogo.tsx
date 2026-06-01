@@ -31,7 +31,7 @@ export function SplashLogo() {
         </svg>
         <div className="text-center">
           <div className="font-display text-4xl md:text-5xl font-bold tracking-tight">
-            {"Buildify".split("").map((c, i) => (
+            {"Buildify Co".split("").map((c, i) => (
               <span
                 key={i}
                 className="inline-block animate-letter-rise"
@@ -42,7 +42,7 @@ export function SplashLogo() {
             ))}
             <span
               className="inline-block animate-letter-rise text-accent"
-              style={{ animationDelay: "2.2s" }}
+              style={{ animationDelay: "2.26s" }}
             >
               .
             </span>

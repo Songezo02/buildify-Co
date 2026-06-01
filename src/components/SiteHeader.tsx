@@ -17,7 +17,7 @@ export function SiteHeader() {
         <Link to="/" className="flex items-center gap-2 group">
           <LogoMark className="h-9 w-9 transition-transform group-hover:rotate-3" />
           <span className="font-display text-xl font-bold tracking-tight">
-            Buildify<span className="text-accent">.</span>
+            Buildify Co<span className="text-accent">.</span>
           </span>
         </Link>
 
