@@ -4,6 +4,7 @@ import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SplashLogo } from "@/components/SplashLogo";
 import { BuildingBackground } from "@/components/BuildingBackground";
+import { TestimonialsAndFeedback } from "@/components/Testimonials";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -25,6 +26,7 @@ function Home() {
       <Hero />
       <AboutTeaser />
       <ServicesTeaser />
+      <TestimonialsAndFeedback />
       <CTABand />
       <SiteFooter />
     </div>
