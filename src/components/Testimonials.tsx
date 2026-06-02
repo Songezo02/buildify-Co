@@ -68,7 +68,7 @@ function TestimonialCard({ t }: { t: CardData }) {
   return (
     <div
       className="flex flex-col rounded-xl bg-card/40 p-6 backdrop-blur-sm"
-      style={{ border: "0.5px solid hsl(var(--border))", borderRadius: 12 }}
+      style={{ border: "0.5px solid var(--border)", borderRadius: 12 }}
     >
       <div className="flex gap-1">
         {Array.from({ length: 5 }).map((_, i) => (
