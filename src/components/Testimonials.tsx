@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
-import { Star, ShieldCheck, CheckCircle2 } from "lucide-react";
+import { Star, CheckCircle2 } from "lucide-react";
 import {
   listApprovedTestimonials,
   submitTestimonial,
@@ -206,75 +206,81 @@ export function TestimonialsAndFeedback() {
         </div>
 
         {/* Section 2: Feedback form */}
-        <div className="mt-24 mx-auto max-w-3xl">
+        <div className="mt-20 mx-auto max-w-2xl">
           <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
             Share your experience
           </div>
-          <h2 className="mt-3 font-display text-3xl md:text-4xl font-bold tracking-tight">
+          <h2 className="mt-2 font-display text-2xl md:text-3xl font-bold tracking-tight">
             How did we do?
           </h2>
-          <p className="mt-3 text-muted-foreground">
-            Your feedback helps us improve and helps other businesses decide. It takes under a minute.
+          <p className="mt-2 text-sm text-muted-foreground">
+            Your feedback helps us improve. It takes under a minute.
           </p>
 
           <div
-            className="mt-8 bg-white text-zinc-900"
+            className="mt-6 bg-card text-card-foreground"
             style={{
-              border: "0.5px solid #e5e7eb",
+              border: "0.5px solid var(--border)",
               borderRadius: 12,
-              padding: "1.75rem",
+              padding: "1.25rem",
             }}
           >
             {submitted ? (
               <div className="flex flex-col items-center text-center">
-                <div className="grid h-14 w-14 place-items-center rounded-full bg-green-100">
-                  <CheckCircle2 className="h-8 w-8 text-green-600" />
+                <div className="grid h-12 w-12 place-items-center rounded-full bg-green-500/15">
+                  <CheckCircle2 className="h-6 w-6 text-green-400" />
                 </div>
-                <h3 className="mt-4 text-2xl font-bold">Thank you!</h3>
-                <p className="mt-2 text-sm text-zinc-600 max-w-md">
-                  Your feedback has been submitted. Songezo will review it and it may appear on the Buildify Co. website soon.
+                <h3 className="mt-3 text-xl font-bold">Thank you!</h3>
+                <p className="mt-1 text-sm text-muted-foreground max-w-md">
+                  Your feedback has been submitted.
                 </p>
-                <div className="mt-8 w-full max-w-md text-left">
-                  <div className="bg-white" style={{ border: "0.5px solid #e5e7eb", borderRadius: 12, padding: "1.25rem" }}>
+                <div className="mt-6 w-full max-w-sm text-left">
+                  <div
+                    className="bg-card/50"
+                    style={{
+                      border: "0.5px solid var(--border)",
+                      borderRadius: 12,
+                      padding: "1rem",
+                    }}
+                  >
                     <div className="flex gap-1">
                       {Array.from({ length: 5 }).map((_, i) => (
                         <Star key={i} className="h-4 w-4" fill="#EF9F27" stroke="#EF9F27" />
                       ))}
                     </div>
-                    <p className="mt-4 font-serif text-base italic leading-relaxed text-zinc-800">
+                    <p className="mt-3 font-serif text-sm italic leading-relaxed text-foreground/90">
                       “{submitted.message}”
                     </p>
-                    <div className="my-4 h-px bg-zinc-200" />
+                    <div className="my-3 h-px bg-border" />
                     <div className="flex items-center gap-3">
                       <div
-                        className="grid h-9 w-9 place-items-center rounded-full text-xs font-semibold text-white"
+                        className="grid h-8 w-8 place-items-center rounded-full text-xs font-semibold text-white"
                         style={{ backgroundColor: submitted.avatarBg }}
                       >
                         {submitted.initials}
                       </div>
                       <div>
                         <div className="text-sm font-medium">{submitted.name}</div>
-                        <div className="text-xs text-zinc-500">
+                        <div className="text-xs text-muted-foreground">
                           {submitted.business}
                           {submitted.location ? ` — ${submitted.location}` : ""}
                         </div>
                       </div>
                     </div>
                   </div>
-                  <p className="mt-3 text-center text-xs text-zinc-500">
+                  <p className="mt-2 text-center text-xs text-muted-foreground">
                     Preview of how your testimonial may look once approved.
                   </p>
                 </div>
               </div>
             ) : (
-              <form onSubmit={onSubmit} className="flex flex-col gap-5">
-                <div className="grid gap-4 sm:grid-cols-2">
+              <form onSubmit={onSubmit} className="flex flex-col gap-4">
+                <div className="grid gap-3 sm:grid-cols-2">
                   <Field label="Your name">
                     <input
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
-                      placeholder="e.g. Thandi Nkosi"
                       className="form-input"
                       maxLength={100}
                     />
@@ -284,20 +290,18 @@ export function TestimonialsAndFeedback() {
                       type="text"
                       value={business}
                       onChange={(e) => setBusiness(e.target.value)}
-                      placeholder="e.g. Glam Studio"
                       className="form-input"
                       maxLength={120}
                     />
                   </Field>
                 </div>
 
-                <div className="grid gap-4 sm:grid-cols-2">
+                <div className="grid gap-3 sm:grid-cols-2">
                   <Field label="Your location">
                     <input
                       type="text"
                       value={location}
                       onChange={(e) => setLocation(e.target.value)}
-                      placeholder="e.g. East London"
                       className="form-input"
                       maxLength={120}
                     />
@@ -330,8 +334,8 @@ export function TestimonialsAndFeedback() {
                             onClick={() => setRating(n)}
                             onMouseEnter={() => setHoverRating(n)}
                             onMouseLeave={() => setHoverRating(0)}
-                            className="text-3xl leading-none transition-transform hover:scale-110"
-                            style={{ color: active ? "#EF9F27" : "#d1d5db" }}
+                            className="text-2xl leading-none transition-transform hover:scale-110"
+                            style={{ color: active ? "#EF9F27" : "var(--muted-foreground)" }}
                             aria-label={`${n} star${n > 1 ? "s" : ""}`}
                           >
                             ★
@@ -339,7 +343,9 @@ export function TestimonialsAndFeedback() {
                         );
                       })}
                     </div>
-                    <span className="text-sm text-zinc-600">{RATING_LABELS[displayRating]}</span>
+                    <span className="text-sm text-muted-foreground">
+                      {RATING_LABELS[displayRating]}
+                    </span>
                   </div>
                 </Field>
 
@@ -349,24 +355,20 @@ export function TestimonialsAndFeedback() {
                     onChange={(e) =>
                       setMessage(e.target.value.slice(0, MAX_MESSAGE))
                     }
-                    placeholder="Tell us what it was like working with Buildify Co. — what did we do well, what could we improve?"
+                    placeholder="Tell us what it was like working with Buildify Co."
                     className="form-input resize-y"
-                    style={{ minHeight: 100 }}
+                    style={{ minHeight: 80 }}
                   />
-                  <div className="mt-1 text-xs text-zinc-500">
+                  <div className="mt-1 text-xs text-muted-foreground">
                     {remaining} characters remaining
                   </div>
                 </Field>
 
-                <div className="flex items-start gap-3 rounded-lg bg-zinc-50 p-3 text-sm text-zinc-600" style={{ border: "0.5px solid #e5e7eb" }}>
-                  <ShieldCheck className="mt-0.5 h-4 w-4 flex-shrink-0 text-zinc-500" />
-                  <p>
-                    Your testimonial will be reviewed by Songezo before appearing on the site. We may shorten it slightly for display.
-                  </p>
-                </div>
-
                 {error && (
-                  <div className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-700" style={{ border: "0.5px solid #fecaca" }}>
+                  <div
+                    className="rounded-lg bg-destructive/10 px-4 py-2.5 text-sm text-destructive"
+                    style={{ border: "0.5px solid oklch(0.6 0.22 25 / 0.35)" }}
+                  >
                     {error}
                   </div>
                 )}
@@ -375,7 +377,7 @@ export function TestimonialsAndFeedback() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="inline-flex items-center gap-2 rounded-lg bg-zinc-900 px-6 py-3 text-sm font-semibold text-white transition hover:bg-zinc-800 disabled:opacity-60"
+                    className="inline-flex items-center gap-2 rounded-lg bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-60"
                   >
                     {submitting ? "Submitting..." : "Submit feedback"}
                   </button>
@@ -389,18 +391,33 @@ export function TestimonialsAndFeedback() {
       <style>{`
         .form-input {
           width: 100%;
-          padding: 0.625rem 0.75rem;
-          background: #fff;
-          color: #111827;
-          border: 0.5px solid #d1d5db;
+          padding: 0.5rem 0.625rem;
+          background: oklch(0.15 0.02 280);
+          color: var(--foreground);
+          border: 0.5px solid var(--border);
           border-radius: 8px;
           font-size: 0.875rem;
           outline: none;
-          transition: border-color 0.15s;
+          transition: border-color 0.15s, box-shadow 0.15s;
+        }
+        .form-input::placeholder {
+          color: var(--muted-foreground);
         }
         .form-input:focus {
-          border-color: #18181b;
-          box-shadow: 0 0 0 3px rgba(24,24,27,0.08);
+          border-color: var(--primary);
+          box-shadow: 0 0 0 3px oklch(0.55 0.22 295 / 0.15);
+        }
+        select.form-input {
+          appearance: none;
+          background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%239ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+          background-position: right 0.5rem center;
+          background-repeat: no-repeat;
+          background-size: 1.25em 1.25em;
+          padding-right: 2rem;
+        }
+        select.form-input option {
+          background: oklch(0.17 0.025 280);
+          color: var(--foreground);
         }
       `}</style>
     </section>
@@ -409,8 +426,8 @@ export function TestimonialsAndFeedback() {
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <label className="flex flex-col gap-1.5">
-      <span className="text-sm font-medium text-zinc-700">{label}</span>
+    <label className="flex flex-col gap-1">
+      <span className="text-xs font-medium text-muted-foreground">{label}</span>
       {children}
     </label>
   );
