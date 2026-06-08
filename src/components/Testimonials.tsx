@@ -98,7 +98,7 @@ export function TestimonialsAndFeedback() {
       .catch(() => {});
   }, [fetchApproved]);
 
-  const allCards = useMemo(() => [...SEED_TESTIMONIALS, ...approved], [approved]);
+  const allCards = useMemo(() => approved, [approved]);
 
   // Form state
   const [name, setName] = useState("");
