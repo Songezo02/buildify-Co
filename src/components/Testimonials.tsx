@@ -199,10 +199,21 @@ export function TestimonialsAndFeedback() {
           </h2>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {allCards.map((t) => (
-            <TestimonialCard key={t.id} t={t} />
-          ))}
+        <div
+          className="mt-12 marquee group"
+          aria-label="Client testimonials"
+          onMouseEnter={(e) => e.currentTarget.classList.add("is-paused")}
+          onMouseLeave={(e) => e.currentTarget.classList.remove("is-paused")}
+        >
+          <div className="marquee-track">
+            {[...allCards, ...allCards].map((t, i) => (
+              <div key={`${t.id}-${i}`} className="marquee-item" aria-hidden={i >= allCards.length}>
+                <TestimonialCard t={t} />
+              </div>
+            ))}
+          </div>
+          <div className="marquee-fade marquee-fade-left" aria-hidden />
+          <div className="marquee-fade marquee-fade-right" aria-hidden />
         </div>
 
         {/* Section 2: Feedback form */}
