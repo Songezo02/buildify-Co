@@ -400,6 +400,34 @@ export function TestimonialsAndFeedback() {
       </div>
 
       <style>{`
+        .marquee {
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+        }
+        .marquee-track {
+          display: flex;
+          width: max-content;
+          gap: 1.5rem;
+          animation: marquee-scroll 60s linear infinite;
+          will-change: transform;
+        }
+        .marquee.is-paused .marquee-track { animation-play-state: paused; }
+        .marquee-item {
+          flex: 0 0 auto;
+          width: 360px;
+          max-width: 85vw;
+        }
+        .marquee-fade { display: none; }
+        @keyframes marquee-scroll {
+          from { transform: translate3d(0, 0, 0); }
+          to { transform: translate3d(calc(-50% - 0.75rem), 0, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track { animation-duration: 180s; }
+        }
         .form-input {
           width: 100%;
           padding: 0.5rem 0.625rem;
