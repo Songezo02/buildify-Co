@@ -27,6 +27,7 @@ function Home() {
       <Hero />
       <AboutTeaser />
       <ServicesTeaser />
+      <HowItWorks />
       <TestimonialsAndFeedback />
       <CTABand />
       <SiteFooter />
