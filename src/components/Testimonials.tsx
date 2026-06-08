@@ -6,39 +6,6 @@ import {
   submitTestimonial,
 } from "@/lib/testimonials.functions";
 
-const SEED_TESTIMONIALS = [
-  {
-    id: "seed-1",
-    initials: "TN",
-    avatarBg: "#2563EB",
-    name: "Thandi Nkosi",
-    business: "Owner, Glam Studio",
-    location: "East London",
-    message:
-      "Songezo built our salon booking site in under two weeks. It looks amazing and our clients actually use it — bookings went up immediately.",
-  },
-  {
-    id: "seed-2",
-    initials: "ML",
-    avatarBg: "#16A34A",
-    name: "Mpho Lekgau",
-    business: "Manager, Sunrise Guesthouse",
-    location: "Mthatha",
-    message:
-      "We needed a guest portal for our guesthouse and Buildify delivered beyond what we imagined. Professional, fast, and they still help us monthly.",
-  },
-  {
-    id: "seed-3",
-    initials: "DM",
-    avatarBg: "#DC2626",
-    name: "Dr. Ayanda Mthembu",
-    business: "General Practitioner",
-    location: "King William's Town",
-    message:
-      "As a doctor running a private practice, I needed something I could trust. Buildify built a clean, patient-friendly site and I didn't have to follow up once.",
-  },
-];
-
 const AVATAR_PALETTE = ["#2563EB", "#16A34A", "#DC2626", "#9333EA", "#0EA5E9", "#F97316"];
 
 function initialsOf(name: string) {
