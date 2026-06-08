@@ -5,6 +5,7 @@ import { SiteFooter } from "@/components/SiteFooter";
 import { SplashLogo } from "@/components/SplashLogo";
 import { BuildingBackground } from "@/components/BuildingBackground";
 import { TestimonialsAndFeedback } from "@/components/Testimonials";
+import { HowItWorks } from "@/components/HowItWorks";
 
 export const Route = createFileRoute("/")({
   head: () => ({
