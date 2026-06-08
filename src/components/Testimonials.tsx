@@ -199,10 +199,21 @@ export function TestimonialsAndFeedback() {
           </h2>
         </div>
 
-        <div className="mt-12 grid gap-6 md:grid-cols-3">
-          {allCards.map((t) => (
-            <TestimonialCard key={t.id} t={t} />
-          ))}
+        <div
+          className="mt-12 marquee group"
+          aria-label="Client testimonials"
+          onMouseEnter={(e) => e.currentTarget.classList.add("is-paused")}
+          onMouseLeave={(e) => e.currentTarget.classList.remove("is-paused")}
+        >
+          <div className="marquee-track">
+            {[...allCards, ...allCards].map((t, i) => (
+              <div key={`${t.id}-${i}`} className="marquee-item" aria-hidden={i >= allCards.length}>
+                <TestimonialCard t={t} />
+              </div>
+            ))}
+          </div>
+          <div className="marquee-fade marquee-fade-left" aria-hidden />
+          <div className="marquee-fade marquee-fade-right" aria-hidden />
         </div>
 
         {/* Section 2: Feedback form */}
@@ -389,6 +400,34 @@ export function TestimonialsAndFeedback() {
       </div>
 
       <style>{`
+        .marquee {
+          position: relative;
+          overflow: hidden;
+          width: 100%;
+          mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+          -webkit-mask-image: linear-gradient(to right, transparent, #000 6%, #000 94%, transparent);
+        }
+        .marquee-track {
+          display: flex;
+          width: max-content;
+          gap: 1.5rem;
+          animation: marquee-scroll 60s linear infinite;
+          will-change: transform;
+        }
+        .marquee.is-paused .marquee-track { animation-play-state: paused; }
+        .marquee-item {
+          flex: 0 0 auto;
+          width: 360px;
+          max-width: 85vw;
+        }
+        .marquee-fade { display: none; }
+        @keyframes marquee-scroll {
+          from { transform: translate3d(0, 0, 0); }
+          to { transform: translate3d(calc(-50% - 0.75rem), 0, 0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .marquee-track { animation-duration: 180s; }
+        }
         .form-input {
           width: 100%;
           padding: 0.5rem 0.625rem;
