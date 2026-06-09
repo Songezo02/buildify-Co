@@ -79,7 +79,7 @@ function Hero() {
       <div className="relative mx-auto max-w-7xl px-6 pb-20">
         <div className="grid w-full max-w-4xl mx-auto gap-4 sm:grid-cols-3 -mt-10">
           {[
-            { icon: Zap, label: "Fast delivery", v: "2–4 weeks" },
+            { icon: Zap, label: "Fast delivery", v: "5–10 Days" },
             { icon: Shield, label: "Always maintained", v: "24/7" },
             { icon: Sparkles, label: "Modern stack", v: "2026 ready" },
           ].map((s) => (
