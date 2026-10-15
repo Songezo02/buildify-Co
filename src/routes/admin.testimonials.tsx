@@ -9,7 +9,7 @@ import {
 
 export const Route = createFileRoute("/admin/testimonials")({
   head: () => ({
-    meta: [{ title: "Testimonials Admin — Buildify Co." }, { name: "description", content: "Private testimonial moderation for Buildify Co." }, { property: "og:title", content: "Testimonials Admin — Buildify Co." }, { property: "og:description", content: "Private testimonial moderation for Buildify Co." }, { property: "og:type", content: "website" }, { name: "twitter:card", content: "summary" }, { name: "robots", content: "noindex" }],
+    meta: [{ title: "Admin — Testimonials" }, { name: "robots", content: "noindex" }],
   }),
   component: AdminTestimonials,
 });

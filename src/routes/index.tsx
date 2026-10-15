@@ -1,71 +1,186 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Code2, Globe, Wrench, Sparkles, Shield, Zap, Scissors, Utensils, Hotel, Truck, Stethoscope } from "lucide-react";
+import { ArrowRight, Code2, Globe, Wrench, Sparkles, Shield, Zap } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 import { SplashLogo } from "@/components/SplashLogo";
 import { BuildingBackground } from "@/components/BuildingBackground";
 import { TestimonialsAndFeedback } from "@/components/Testimonials";
 import { HowItWorks } from "@/components/HowItWorks";
-import { Button } from "@/components/ui/button";
-import salonImg from "@/assets/industry-salon.jpg";
-import logisticsImg from "@/assets/industry-logistics.jpg";
-import doctorImg from "@/assets/industry-doctor.jpg";
 
 export const Route = createFileRoute("/")({
-  head: () => ({ meta: [
-    { title: "Buildify Co. — We Build. You Grow." },
-    { name: "description", content: "Buildify Co. designs and builds modern websites and applications, then maintains them so your business keeps growing." },
-    { property: "og:title", content: "Buildify Co. — We Build. You Grow." },
-    { property: "og:description", content: "Websites, applications and ongoing maintenance from Buildify Co., founded by Songezo Gwabavu." },
-    { property: "og:type", content: "website" },
-    { name: "twitter:card", content: "summary_large_image" },
-  ] }), component: Home,
+  head: () => ({
+    meta: [
+      { title: "Buildify Co. — We Build. You Grow." },
+      { name: "description", content: "Buildify Co. designs and builds modern websites and applications, then maintains them so your business keeps growing." },
+      { property: "og:title", content: "Buildify Co. — We Build. You Grow." },
+      { property: "og:description", content: "Websites, applications and ongoing maintenance from Buildify Co., founded by Songezo Gwabavu." },
+    ],
+  }),
+  component: Home,
 });
 
 function Home() {
-  return <div className="min-h-screen bg-background text-foreground"><SplashLogo /><SiteHeader /><Hero /><ServicesTeaser /><Industries /><AboutTeaser /><HowItWorks /><TestimonialsAndFeedback /><CTABand /><SiteFooter /></div>;
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      <SplashLogo />
+      <SiteHeader />
+      <Hero />
+      <AboutTeaser />
+      <ServicesTeaser />
+      <HowItWorks />
+      <TestimonialsAndFeedback />
+      <CTABand />
+      <SiteFooter />
+    </div>
+  );
 }
 
 function Hero() {
-  return <section className="editorial-hero border-b border-border/60">
-    <BuildingBackground />
-    <div className="relative mx-auto max-w-6xl px-6 pb-12 pt-16 md:pt-24">
-      <div className="editorial-label">Digital products. Real business growth.</div>
-      <h1 className="editorial-title mt-7">Buildify Co.</h1>
-      <p className="mt-4 font-display text-5xl font-extrabold leading-tight md:text-7xl">WE BUILD.<br />YOU GROW<span className="text-accent">.</span></p>
-      <p className="mt-8 max-w-2xl text-xl leading-relaxed text-muted-foreground md:text-2xl">The digital partner for your next chapter.<br className="hidden sm:block" /> Websites, applications, and <span className="text-accent">lasting support.</span></p>
-      <div className="mt-9 flex flex-wrap gap-3">
-        <Button asChild variant="editorial" className="h-12 px-6"><Link to="/contact">Get Started <ArrowRight /></Link></Button>
-        <Button asChild variant="editorialOutline" className="h-12 px-6"><Link to="/services">Explore Services <ArrowRight /></Link></Button>
-      </div>
-      <div className="mt-12 border-t border-border pt-6">
-        <p className="text-center font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Built for businesses across South Africa</p>
-        <div className="mt-6 grid grid-cols-2 gap-5 text-sm text-muted-foreground sm:grid-cols-5">
-          {[{ icon: Scissors, label: "Salons" }, { icon: Utensils, label: "Restaurants" }, { icon: Hotel, label: "Guesthouses" }, { icon: Truck, label: "Logistics" }, { icon: Stethoscope, label: "Healthcare" }].map(s => <div key={s.label} className="flex items-center justify-center gap-2"><s.icon className="h-5 w-5" /><span>{s.label}</span></div>)}
+  return (
+    <section className="relative bg-hero-gradient">
+      <div className="relative overflow-hidden">
+        <BuildingBackground />
+        <div className="relative mx-auto max-w-7xl px-6 pt-20 pb-28 md:pt-32 md:pb-40">
+          <div className="flex flex-col items-center text-center">
+            <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-4 py-1.5 text-xs font-mono uppercase tracking-widest text-muted-foreground backdrop-blur">
+              <span className="h-2 w-2 rounded-full bg-accent animate-pulse" />
+              Now taking new projects
+            </div>
+
+            <h1 className="mt-8 font-display text-[clamp(2.75rem,9vw,7rem)] font-bold leading-[0.95] tracking-tighter text-balance">
+              <span className="text-gradient">WE BUILD.</span>
+              <br />
+              <span className="text-gradient-purple">YOU GROW.</span>
+            </h1>
+
+            <p className="mt-8 max-w-2xl text-lg text-white/85 leading-relaxed">
+              Buildify Co. crafts high-performance websites and applications — then maintains them so your business never stops shipping.
+            </p>
+
+            <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
+              <Link
+                to="/contact"
+                className="group inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow transition hover:scale-105"
+              >
+                Get Started
+                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              </Link>
+              <Link
+                to="/services"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-secondary/50 px-7 py-4 text-base font-medium text-foreground transition hover:border-accent/50 hover:text-accent backdrop-blur"
+              >
+                Explore Services
+              </Link>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>;
-}
 
-function ServicesTeaser() {
-  const services = [{ icon: Globe, title: "Websites", body: "Distinctive websites that turn first impressions into lasting connections." }, { icon: Code2, title: "Applications", body: "Purpose-built applications that make your business work better." }, { icon: Wrench, title: "Maintenance", body: "Reliable support, updates, and improvements. Long after launch." }];
-  return <section className="editorial-section mx-auto max-w-6xl px-6">
-    <div className="editorial-label">What we build</div>
-    <div className="mt-5 flex flex-wrap items-end justify-between gap-6"><h2 className="font-display text-4xl font-bold leading-tight md:text-5xl">Your ambition.<br />Our expertise.</h2><Button asChild variant="link" className="px-0 text-foreground"><Link to="/services">Explore all services <ArrowRight /></Link></Button></div>
-    <div className="mt-12 grid gap-0 md:grid-cols-3">{services.map((s, i) => <Link key={s.title} to="/contact" search={{ service: s.title }} className="group border-t border-border py-8 md:pr-8"><div className="flex items-center justify-between"><span className="service-number">0{i + 1}</span><s.icon className="h-6 w-6 text-muted-foreground" /></div><h3 className="mt-9 text-2xl font-semibold">{s.title}</h3><p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">{s.body}</p><ArrowRight className="mt-7 h-5 w-5 text-accent transition group-hover:translate-x-2" /></Link>)}</div>
-  </section>;
-}
-
-function Industries() {
-  const items = [{ title: "Salons & beauty", image: salonImg, service: "Salons website (R1 800)", price: "R1 800" }, { title: "Healthcare professionals", image: doctorImg, service: "Healthcare Professional Website (R2 400)", price: "R2 400" }, { title: "Logistics companies", image: logisticsImg, service: "Logistics Companies website (R3 900)", price: "R3 900" }];
-  return <section className="border-y border-border bg-card/30"><div className="editorial-section mx-auto max-w-6xl px-6"><div className="editorial-label">Built around your business</div><div className="mt-5 flex flex-wrap items-end justify-between gap-5"><h2 className="text-4xl font-bold md:text-5xl">Different industries.<br />One commitment.</h2><Button asChild variant="link" className="px-0 text-foreground"><Link to="/services">View packages & pricing <ArrowRight /></Link></Button></div><div className="mt-10 grid gap-6 md:grid-cols-3">{items.map(item => <Link key={item.title} to="/contact" search={{ service: item.service }} className="group overflow-hidden rounded-lg border border-border bg-card"><div className="aspect-[4/3] overflow-hidden"><img src={item.image} alt={item.title} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" loading="lazy" /></div><div className="p-5"><h3 className="text-xl font-semibold">{item.title}</h3><div className="mt-5 flex items-center justify-between border-t border-border pt-4"><span className="text-xs text-muted-foreground">From <span className="ml-1 text-base font-semibold text-foreground">{item.price}</span></span><ArrowRight className="h-5 w-5 text-accent" /></div></div></Link>)}</div></div></section>;
+      <div className="relative mx-auto max-w-7xl px-6 pb-20">
+        <div className="grid w-full max-w-4xl mx-auto gap-4 sm:grid-cols-3 -mt-10">
+          {[
+            { icon: Zap, label: "Fast delivery", v: "5–10 Days" },
+            { icon: Shield, label: "Always maintained", v: "24/7" },
+            { icon: Sparkles, label: "Modern stack", v: "2026 ready" },
+          ].map((s) => (
+            <div key={s.label} data-reveal-card className="rounded-2xl border border-border bg-card/60 p-5 backdrop-blur">
+              <s.icon className="h-5 w-5 text-accent" />
+              <div className="mt-3 font-display text-2xl font-bold">{s.v}</div>
+              <div className="text-xs text-muted-foreground uppercase tracking-wider mt-1">{s.label}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 }
 
 function AboutTeaser() {
-  return <section className="editorial-section mx-auto max-w-6xl px-6"><div className="grid gap-12 md:grid-cols-2"><div><div className="editorial-label">The people behind the product</div><h2 className="mt-5 text-4xl font-bold leading-tight md:text-5xl">Small studio.<br />Big on craft.</h2><Button asChild variant="link" className="mt-6 px-0 text-foreground"><Link to="/about">Meet Buildify <ArrowRight /></Link></Button></div><div><p className="text-xl leading-relaxed text-muted-foreground">Founded by <span className="text-foreground">Songezo Gwabavu</span>, Buildify Co. partners with founders and teams to design, build, and maintain the digital products that move their businesses forward.</p><div className="mt-10 grid grid-cols-3 gap-4 border-t border-border pt-6">{[{ icon: Zap, v: "5–10 Days", label: "Fast delivery" }, { icon: Shield, v: "24/7", label: "Maintained" }, { icon: Sparkles, v: "2026", label: "Modern stack" }].map(s => <div key={s.label}><s.icon className="h-4 w-4 text-signal" /><div className="mt-3 text-lg font-bold">{s.v}</div><div className="mt-2 text-[10px] uppercase text-muted-foreground">{s.label}</div></div>)}</div></div></div></section>;
+  return (
+    <section className="border-t border-border/60 bg-card/30">
+      <div className="mx-auto grid max-w-7xl gap-12 px-6 py-24 md:grid-cols-12 md:items-center">
+        <div className="md:col-span-7">
+          <div className="font-mono text-xs uppercase tracking-widest text-accent">About Buildify</div>
+          <h2 className="mt-4 font-display text-4xl md:text-5xl font-bold tracking-tight text-balance">
+            A studio built on craft, run by a founder who ships.
+          </h2>
+          <p className="mt-6 text-lg text-muted-foreground leading-relaxed">
+            Buildify Co. is a technology studio founded by <span className="text-foreground font-medium">Songezo Gwabavu</span>. We partner with founders and teams to design, build and maintain the digital products that move their business forward.
+          </p>
+          <Link
+            to="/about"
+            className="mt-8 inline-flex items-center gap-2 text-sm font-semibold text-accent hover:gap-3 transition-all"
+          >
+            Read our story <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="md:col-span-5">
+          <div className="relative rounded-3xl border border-border bg-gradient-to-br from-card to-background p-8 shadow-glow">
+            <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Founder</div>
+            <div className="mt-3 font-display text-3xl font-bold">Songezo Gwabavu</div>
+            <div className="mt-1 text-sm text-muted-foreground">Founder & Lead Engineer</div>
+            <div className="mt-6 h-px bg-border" />
+            <p className="mt-6 text-sm text-muted-foreground italic">
+              "We build the things we'd want to use. Then we look after them like they're our own."
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ServicesTeaser() {
+  const services = [
+    { icon: Globe, title: "Websites", body: "Marketing sites, landing pages and editorial platforms — fast, accessible, beautifully typeset." },
+    { icon: Code2, title: "Applications", body: "Full-stack web apps, dashboards and internal tools tailored to how your team actually works." },
+    { icon: Wrench, title: "Maintenance", body: "Monitoring, updates, performance tuning and feature work on a steady monthly rhythm." },
+  ];
+  return (
+    <section className="mx-auto max-w-7xl px-6 py-24">
+      <div className="mb-12 flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div>
+          <div className="font-mono text-xs uppercase tracking-widest text-accent">What we do</div>
+          <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">Services</h2>
+        </div>
+        <Link to="/services" className="text-sm font-semibold text-accent hover:underline">All services →</Link>
+      </div>
+      <div className="grid gap-6 md:grid-cols-3">
+        {services.map((s) => (
+          <div key={s.title} data-reveal-card className="group relative overflow-hidden rounded-2xl border border-border bg-card/40 p-8 transition hover:bg-card">
+            <div className="grid h-12 w-12 place-items-center rounded-xl bg-gradient-primary shadow-glow">
+              <s.icon className="h-6 w-6 text-primary-foreground" />
+            </div>
+            <h3 className="mt-6 font-display text-2xl font-bold">{s.title}</h3>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.body}</p>
+            <div className="absolute -bottom-12 -right-12 h-32 w-32 rounded-full bg-accent/10 blur-2xl transition group-hover:bg-accent/20" />
+          </div>
+        ))}
+      </div>
+    </section>
+  );
 }
 
 function CTABand() {
-  return <section className="border-y border-border bg-secondary/40"><div className="editorial-section mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 px-6 md:flex-row md:items-center"><div><div className="editorial-label">Let's make it happen</div><h2 className="mt-5 text-4xl font-bold md:text-5xl">Have something to build<span className="text-accent">?</span></h2><p className="mt-4 text-muted-foreground">Tell us about your project. We'll reply within one business day.</p></div><Button asChild variant="editorial" className="h-12 shrink-0 px-6"><Link to="/contact">Start a project <ArrowRight /></Link></Button></div></section>;
+  return (
+    <section className="mx-auto max-w-7xl px-6 pb-24">
+      <div className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-primary/20 via-card to-accent/10 p-10 md:p-16">
+        <div className="grid-bg absolute inset-0 opacity-30" />
+        <div className="relative flex flex-col items-start gap-6 md:flex-row md:items-center md:justify-between">
+          <div>
+            <h3 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-balance">
+              Have something to build?
+            </h3>
+            <p className="mt-2 text-muted-foreground">Tell us about your project — we'll reply within one business day.</p>
+          </div>
+          <Link
+            to="/contact"
+            className="inline-flex items-center gap-2 rounded-full bg-foreground px-7 py-4 text-base font-semibold text-background transition hover:bg-accent hover:text-accent-foreground"
+          >
+            Start a project <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
 }

@@ -13,8 +13,6 @@ export const Route = createFileRoute("/services")({
     meta: [
       { title: "Services — Buildify Co." },
       { name: "description", content: "Buildify Co. builds websites, applications and provides ongoing maintenance — tailored to founders and growing teams." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Services — Buildify Co." },
       { property: "og:description", content: "Web, app and maintenance services from Buildify Co." },
     ],
@@ -62,7 +60,7 @@ function Services() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-      <section className="editorial-hero">
+      <section className="relative overflow-hidden">
         <div className="pointer-events-none absolute inset-0" aria-hidden="true">
           <video
             className="absolute inset-0 h-full w-full object-cover"
@@ -74,15 +72,15 @@ function Services() {
             preload="auto"
             style={{ filter: "brightness(0.65) contrast(1.1)" }}
           />
-          <div className="absolute inset-0 bg-overlay" />
+          <div className="absolute inset-0 bg-black/60" />
           <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background" />
         </div>
-        <div className="relative mx-auto max-w-7xl px-6 py-16 md:py-20 text-left">
-          <div className="editorial-label">Services</div>
-          <h1 className="mt-4 font-display text-5xl md:text-7xl font-bold tracking-tighter text-balance text-foreground">
+        <div className="relative mx-auto max-w-5xl px-6 py-16 md:py-20 text-center">
+          <div className="font-mono text-xs uppercase tracking-widest text-accent">Services</div>
+          <h1 className="mt-4 font-display text-5xl md:text-7xl font-bold tracking-tighter text-balance text-white">
             Everything you need <span className="text-gradient-purple">to ship.</span>
           </h1>
-          <p className="mt-6 text-lg text-foreground/80 max-w-2xl leading-relaxed">
+          <p className="mt-6 text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
             From a one-page launch site to a long-term application partnership — pick the support level that matches your growth.
           </p>
         </div>
@@ -96,9 +94,9 @@ function Services() {
               to="/contact"
               search={{ service: s.title }}
               data-reveal-card
-              className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card/40 p-8 transition hover:bg-card"
+              className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 p-8 transition hover:bg-card"
             >
-              <div className="grid h-14 w-14 place-items-center rounded-lg bg-gradient-primary shadow-glow">
+              <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-primary shadow-glow">
                 <s.icon className="h-7 w-7 text-primary-foreground" />
               </div>
               <h2 className="mt-6 font-display text-2xl font-bold">{s.title}</h2>
@@ -114,7 +112,7 @@ function Services() {
               <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent">
                 Request this service <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
               </div>
-              
+              <div className="absolute -bottom-16 -right-16 h-40 w-40 rounded-full bg-accent/10 blur-3xl transition group-hover:bg-accent/20" />
             </Link>
           ))}
         </div>
@@ -122,8 +120,8 @@ function Services() {
 
       <section className="border-t border-border/60 bg-background">
         <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="flex flex-col items-center text-left">
-            <div className="editorial-label">Pricing</div>
+          <div className="flex flex-col items-center text-center">
+            <div className="font-mono text-xs uppercase tracking-widest text-accent">Pricing</div>
             <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold tracking-tight">
               Websites by <span className="text-gradient-purple">industry</span>
             </h2>
@@ -132,14 +130,14 @@ function Services() {
             </p>
           </div>
 
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {pricing.map((p) => (
               <Link
                 key={p.industry}
                 to="/contact"
                 search={{ service: `${p.industry} website (${p.price})` }}
                 data-reveal-card
-                className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card/40 transition hover:bg-card"
+                className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 transition hover:bg-card"
               >
                 <div className="relative aspect-[4/3] overflow-hidden">
                   <img
@@ -164,7 +162,7 @@ function Services() {
             ))}
           </div>
 
-          <p className="mt-10 text-left text-xs text-muted-foreground">
+          <p className="mt-10 text-center text-xs text-muted-foreground">
             Prices exclude domain &amp; hosting. Custom industries quoted on request.
           </p>
         </div>
@@ -172,10 +170,10 @@ function Services() {
 
       <section className="border-t border-border/60 bg-card/30">
         <div className="mx-auto max-w-7xl px-6 py-20">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-left">Standard with every project</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-center">Standard with every project</h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {extras.map((e) => (
-              <div key={e.title} data-reveal-card className="rounded-lg border border-border bg-background/40 p-6">
+              <div key={e.title} data-reveal-card className="rounded-2xl border border-border bg-background/40 p-6">
                 <e.icon className="h-6 w-6 text-accent" />
                 <h3 className="mt-4 font-display text-xl font-bold">{e.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{e.body}</p>
@@ -185,7 +183,7 @@ function Services() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20 text-left">
+      <section className="mx-auto max-w-7xl px-6 py-20 text-center">
         <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">Ready to start?</h2>
         <p className="mt-3 text-muted-foreground">Tell us about your project and we'll come back with a clear plan.</p>
         <Link
