@@ -1,12 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Star, CheckCircle2 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import {
   listApprovedTestimonials,
   submitTestimonial,
 } from "@/lib/testimonials.functions";
 
-const AVATAR_PALETTE = ["#2563EB", "#16A34A", "#DC2626", "#9333EA", "#0EA5E9", "#F97316"];
+const AVATAR_PALETTE = ["var(--avatar-blue)", "var(--avatar-green)", "var(--avatar-red)", "var(--avatar-purple)", "var(--avatar-cyan)", "var(--avatar-orange)"];
 
 function initialsOf(name: string) {
   const parts = name.trim().split(/\s+/);
@@ -35,20 +36,20 @@ function TestimonialCard({ t }: { t: CardData }) {
   return (
     <div
       className="flex flex-col rounded-xl bg-card/40 p-6 backdrop-blur-sm"
-      style={{ border: "0.5px solid var(--border)", borderRadius: 12 }}
+      style={{ border: "0.5px solid var(--border)", borderRadius: 8 }}
     >
       <div className="flex gap-1">
         {Array.from({ length: 5 }).map((_, i) => (
-          <Star key={i} className="h-4 w-4" fill="#EF9F27" stroke="#EF9F27" />
+          <Star key={i} className="h-4 w-4" fill="var(--rating)" stroke="var(--rating)" />
         ))}
       </div>
-      <p className="mt-4 font-serif text-base italic leading-relaxed text-foreground/90">
+      <p className="mt-4 font-sans text-base italic leading-relaxed text-foreground/90">
         “{t.message}”
       </p>
       <div className="my-5 h-px bg-border" />
       <div className="flex items-center gap-3">
         <div
-          className="grid h-9 w-9 place-items-center rounded-full text-xs font-semibold text-white"
+          className="grid h-9 w-9 place-items-center rounded-full text-xs font-semibold text-primary-foreground"
           style={{ backgroundColor: t.avatarBg }}
         >
           {t.initials}
@@ -157,8 +158,8 @@ export function TestimonialsAndFeedback() {
     <section className="border-t border-border/60 bg-card/20">
       <div className="mx-auto max-w-7xl px-6 py-24">
         {/* Section 1: Testimonials */}
-        <div className="text-center">
-          <div className="font-mono text-xs uppercase tracking-widest text-accent">
+        <div className="text-left">
+          <div className="editorial-label">
             Testimonials
           </div>
           <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight">
@@ -199,14 +200,14 @@ export function TestimonialsAndFeedback() {
             className="mt-6 bg-card text-card-foreground"
             style={{
               border: "0.5px solid var(--border)",
-              borderRadius: 12,
+              borderRadius: 8,
               padding: "1.25rem",
             }}
           >
             {submitted ? (
               <div className="flex flex-col items-center text-center">
-                <div className="grid h-12 w-12 place-items-center rounded-full bg-green-500/15">
-                  <CheckCircle2 className="h-6 w-6 text-green-400" />
+                <div className="grid h-12 w-12 place-items-center rounded-full bg-success/15">
+                  <CheckCircle2 className="h-6 w-6 text-success" />
                 </div>
                 <h3 className="mt-3 text-xl font-bold">Thank you!</h3>
                 <p className="mt-1 text-sm text-muted-foreground max-w-md">
@@ -217,22 +218,22 @@ export function TestimonialsAndFeedback() {
                     className="bg-card/50"
                     style={{
                       border: "0.5px solid var(--border)",
-                      borderRadius: 12,
+                      borderRadius: 8,
                       padding: "1rem",
                     }}
                   >
                     <div className="flex gap-1">
                       {Array.from({ length: 5 }).map((_, i) => (
-                        <Star key={i} className="h-4 w-4" fill="#EF9F27" stroke="#EF9F27" />
+                        <Star key={i} className="h-4 w-4" fill="var(--rating)" stroke="var(--rating)" />
                       ))}
                     </div>
-                    <p className="mt-3 font-serif text-sm italic leading-relaxed text-foreground/90">
+                    <p className="mt-3 font-sans text-sm italic leading-relaxed text-foreground/90">
                       “{submitted.message}”
                     </p>
                     <div className="my-3 h-px bg-border" />
                     <div className="flex items-center gap-3">
                       <div
-                        className="grid h-8 w-8 place-items-center rounded-full text-xs font-semibold text-white"
+                        className="grid h-8 w-8 place-items-center rounded-full text-xs font-semibold text-primary-foreground"
                         style={{ backgroundColor: submitted.avatarBg }}
                       >
                         {submitted.initials}
@@ -306,18 +307,20 @@ export function TestimonialsAndFeedback() {
                       {[1, 2, 3, 4, 5].map((n) => {
                         const active = n <= displayRating;
                         return (
-                          <button
+                          <Button
                             key={n}
                             type="button"
                             onClick={() => setRating(n)}
                             onMouseEnter={() => setHoverRating(n)}
                             onMouseLeave={() => setHoverRating(0)}
+                            variant="ghost"
+                            size="icon"
                             className="text-2xl leading-none transition-transform hover:scale-110"
-                            style={{ color: active ? "#EF9F27" : "var(--muted-foreground)" }}
+                            style={{ color: active ? "var(--rating)" : "var(--muted-foreground)" }}
                             aria-label={`${n} star${n > 1 ? "s" : ""}`}
                           >
                             ★
-                          </button>
+                          </Button>
                         );
                       })}
                     </div>
@@ -352,13 +355,13 @@ export function TestimonialsAndFeedback() {
                 )}
 
                 <div>
-                  <button
+                  <Button
                     type="submit"
                     disabled={submitting}
                     className="inline-flex items-center gap-2 rounded-lg bg-gradient-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90 disabled:opacity-60"
                   >
                     {submitting ? "Submitting..." : "Submit feedback"}
-                  </button>
+                  </Button>
                 </div>
               </form>
             )}
@@ -398,7 +401,7 @@ export function TestimonialsAndFeedback() {
         .form-input {
           width: 100%;
           padding: 0.5rem 0.625rem;
-          background: oklch(0.15 0.02 280);
+          background: var(--background);
           color: var(--foreground);
           border: 0.5px solid var(--border);
           border-radius: 8px;
@@ -411,7 +414,7 @@ export function TestimonialsAndFeedback() {
         }
         .form-input:focus {
           border-color: var(--primary);
-          box-shadow: 0 0 0 3px oklch(0.55 0.22 295 / 0.15);
+          box-shadow: 0 0 0 3px color-mix(in oklab, var(--accent) 15%, transparent);
         }
         select.form-input {
           appearance: none;
@@ -422,7 +425,7 @@ export function TestimonialsAndFeedback() {
           padding-right: 2rem;
         }
         select.form-input option {
-          background: oklch(0.17 0.025 280);
+          background: var(--card);
           color: var(--foreground);
         }
       `}</style>

@@ -40,8 +40,8 @@ export function HowItWorks() {
 
   return (
     <section className="mx-auto max-w-7xl px-6 py-24">
-      <div className="mb-12 text-center hiw-fade" style={{ animationDelay: "0s" }}>
-        <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+      <div className="mb-12 text-left hiw-fade" style={{ animationDelay: "0s" }}>
+        <div className="editorial-label">
           How it works
         </div>
         <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight hiw-fade" style={{ animationDelay: "0.08s" }}>
@@ -56,7 +56,7 @@ export function HowItWorks() {
           return (
             <div
               key={step.title}
-              className={`hiw-card group relative rounded-2xl border bg-card/60 p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:bg-card hover:border-accent/60 hiw-fade ${
+              className={`hiw-card group relative rounded-lg border bg-card/60 p-6 transition-all duration-300 ease-out hover:-translate-y-1.5 hover:bg-card hover:border-accent/60 hiw-fade ${
                 isActive ? "is-active" : ""
               }`}
               style={{ animationDelay: `${0.15 + i * 0.15}s` }}
