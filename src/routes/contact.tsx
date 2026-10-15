@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, Send, MapPin, Clock, MessageCircle } from "lucide-react";
 import { useState } from "react";
+import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -14,6 +15,8 @@ export const Route = createFileRoute("/contact")({
     meta: [
       { title: "Contact — Buildify Co." },
       { name: "description", content: "Get in touch with Buildify Co. — call or WhatsApp 083 335 9097, or email songezogwabavu@gmail.com." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
       { property: "og:title", content: "Contact Buildify Co." },
       { property: "og:description", content: "Reach Buildify Co. by phone, WhatsApp or email." },
     ],
@@ -32,7 +35,7 @@ function Contact() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-      <div className="relative overflow-hidden">
+      <div className="editorial-hero">
         <video
           className="absolute inset-0 h-full w-full object-cover"
           src="/ContactPage.mp4"
@@ -43,15 +46,15 @@ function Contact() {
           preload="auto"
           style={{ filter: "brightness(0.65) contrast(1.1)" }}
         />
-        <div className="absolute inset-0 bg-black/60" />
+        <div className="absolute inset-0 bg-overlay" />
         <div className="absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-background" />
 
-        <section className="relative mx-auto max-w-5xl px-6 py-20 md:py-28 text-center">
-          <div className="font-mono text-xs uppercase tracking-widest text-accent">Contact</div>
-          <h1 className="mt-4 font-display text-5xl md:text-7xl font-bold tracking-tighter text-balance text-white">
+        <section className="relative mx-auto max-w-7xl px-6 py-20 md:py-28 text-left">
+          <div className="editorial-label">Contact</div>
+          <h1 className="mt-4 font-display text-5xl md:text-7xl font-bold tracking-tighter text-balance text-foreground">
             Let's <span className="text-gradient-purple">talk.</span>
           </h1>
-          <p className="mt-6 text-lg text-white/85 max-w-xl mx-auto">
+          <p className="mt-6 text-lg text-foreground/80 max-w-xl">
             Whether it's a brand-new build or help maintaining an existing product — we'd love to hear from you.
           </p>
         </section>
@@ -64,19 +67,19 @@ function Contact() {
               target="_blank"
               rel="noopener noreferrer"
               data-reveal-card
-              className="flex items-start gap-4 rounded-2xl border border-accent/40 bg-accent/10 p-6 transition hover:bg-accent/15"
+              className="flex items-start gap-4 rounded-lg border border-accent/40 bg-accent/10 p-6 transition hover:bg-accent/15"
             >
               <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-accent shadow-accent-glow">
                 <MessageCircle className="h-5 w-5 text-accent-foreground" />
               </div>
               <div>
-                <div className="font-mono text-xs uppercase tracking-widest text-accent">WhatsApp</div>
+                <div className="editorial-label">WhatsApp</div>
                 <div className="mt-1 font-display text-xl font-bold">+27 83 335 9097</div>
                 <div className="mt-1 text-sm text-muted-foreground">Chat with us instantly</div>
               </div>
             </a>
 
-            <a href="tel:+27833359097" data-reveal-card className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:bg-card">
+            <a href="tel:+27833359097" data-reveal-card className="flex items-start gap-4 rounded-lg border border-border bg-card/40 p-6 transition hover:bg-card">
               <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-primary shadow-glow">
                 <Phone className="h-5 w-5 text-primary-foreground" />
               </div>
@@ -87,7 +90,7 @@ function Contact() {
               </div>
             </a>
 
-            <a href="mailto:songezogwabavu@gmail.com" data-reveal-card className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:bg-card">
+            <a href="mailto:songezogwabavu@gmail.com" data-reveal-card className="flex items-start gap-4 rounded-lg border border-border bg-card/40 p-6 transition hover:bg-card">
               <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-accent shadow-accent-glow">
                 <Mail className="h-5 w-5 text-accent-foreground" />
               </div>
@@ -98,7 +101,7 @@ function Contact() {
               </div>
             </a>
 
-            <div className="rounded-2xl border border-border bg-card/40 p-6 space-y-4">
+            <div className="rounded-lg border border-border bg-card/40 p-6 space-y-4">
               <div className="flex items-center gap-3 text-sm">
                 <Clock className="h-4 w-4 text-accent" />
                 <span className="text-muted-foreground">Mon – Fri · 09:00 – 18:00 SAST</span>
@@ -113,7 +116,7 @@ function Contact() {
           <div className="lg:col-span-3">
             <form
               onSubmit={(e) => { e.preventDefault(); setSent(true); }}
-              className="rounded-3xl border border-border bg-card/40 p-8 md:p-10 space-y-5"
+              className="rounded-lg border border-border bg-card/40 p-8 md:p-10 space-y-5"
             >
               <div className="grid gap-5 md:grid-cols-2">
                 <Field label="Your name" id="name" required />
@@ -137,13 +140,13 @@ function Contact() {
                   placeholder="Tell us about your project..."
                 />
               </div>
-              <button
+              <Button
                 type="submit"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02] disabled:opacity-60"
                 disabled={sent}
               >
                 {sent ? "Message sent — we'll be in touch ✓" : (<>Send message <Send className="h-4 w-4" /></>)}
-              </button>
+              </Button>
             </form>
           </div>
         </div>
