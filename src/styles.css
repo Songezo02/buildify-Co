@@ -54,7 +54,7 @@
   --popover-foreground: oklch(0.96 0.008 85);
 
   --primary: oklch(0.64 0.22 28);
-  --primary-foreground: oklch(0.96 0.008 85);
+  --primary-foreground: oklch(0.16 0 0);
 
   --secondary: oklch(0.24 0 0);
   --secondary-foreground: oklch(0.94 0.008 85);
@@ -321,6 +321,8 @@
 .editorial-hero { position: relative; isolation: isolate; overflow: hidden; }
 .editorial-hero::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background-image: linear-gradient(var(--border) 1px, transparent 1px), linear-gradient(90deg, var(--border) 1px, transparent 1px); background-size: 72px 72px; opacity: .22; }
 .editorial-hero video { opacity: .16; filter: grayscale(1) brightness(.6); }
+.editorial-hero::after { z-index: 0; opacity: .4; }
+.editorial-hero > .relative { z-index: 1; }
 .editorial-label { display: flex; align-items: center; gap: 12px; color: var(--muted-foreground); font: 10px var(--font-mono); text-transform: uppercase; letter-spacing: .08em; }
 .editorial-label::before { content: "→"; color: var(--signal); font-size: 17px; }
 .editorial-label::after { content: ""; flex: 1; max-width: 260px; height: 1px; background: var(--border); }
