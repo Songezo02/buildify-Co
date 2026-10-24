@@ -38,7 +38,7 @@ function Contact() {
             Let's <span className="text-gradient-purple">talk.</span>
           </h1>
           <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto">
-            Whether it's a brand-new build or help maintaining an existing product — we'd love to hear from you.
+            Whether it's a brand-new build or help maintaining an existing product we'd love to hear from you.
           </p>
         </section>
 
