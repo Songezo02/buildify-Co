@@ -25,6 +25,9 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   const { service } = Route.useSearch();
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const sendingRef = useRef(false);
   const whatsappHref = service
     ? `https://wa.me/27833359097?text=${encodeURIComponent(`Hi Buildify Co., I'm interested in: ${service}`)}`
     : "https://wa.me/27833359097";
@@ -99,7 +102,34 @@ function Contact() {
 
           <div className="lg:col-span-3">
             <form
-              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (sendingRef.current) return;
+                const form = e.currentTarget;
+                const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
+                sendingRef.current = true;
+                setSending(true);
+                setError(null);
+                try {
+                  await submitEnquiry({
+                    name: data.name.trim(),
+                    email: data.email.trim(),
+                    services: [data.service.trim() || "General enquiry"],
+                    description: data.subject.trim() ? `${data.subject.trim()}\n${data.message.trim()}` : data.message.trim(),
+                    contactMethod: "email",
+                    business: "",
+                    phone: "",
+                    budget: "",
+                  });
+                  setSent(true);
+                  form.reset();
+                } catch {
+                  setError("Something went wrong while sending your message. Please try again, or contact us directly on 083 335 9097.");
+                } finally {
+                  sendingRef.current = false;
+                  setSending(false);
+                }
+              }}
               className="rounded-3xl border border-border bg-card/40 p-8 md:p-10 space-y-5"
             >
               <div className="grid gap-5 md:grid-cols-2">
