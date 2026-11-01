@@ -154,12 +154,21 @@ function Contact() {
                   placeholder="Tell us about your project..."
                 />
               </div>
+              {error && (
+                <div role="alert" className="rounded-xl border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive">
+                  {error}
+                </div>
+              )}
               <button
                 type="submit"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02] disabled:opacity-60"
-                disabled={sent}
+                disabled={sending || sent}
               >
-                {sent ? "Message sent — we'll be in touch ✓" : (<>Send message <Send className="h-4 w-4" /></>)}
+                {sent
+                  ? "Message sent — we'll be in touch ✓"
+                  : sending
+                    ? "Sending..."
+                    : (<>Send message <Send className="h-4 w-4" /></>)}
               </button>
             </form>
           </div>
