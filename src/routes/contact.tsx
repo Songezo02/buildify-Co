@@ -149,6 +149,7 @@ function Contact() {
                   id="message"
                   rows={5}
                   required
+                  minLength={20}
                   defaultValue={service ? `Hi Buildify Co., I'm interested in your ${service}. Please get in touch to discuss.` : ""}
                   className="mt-2 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 resize-none"
                   placeholder="Tell us about your project..."
