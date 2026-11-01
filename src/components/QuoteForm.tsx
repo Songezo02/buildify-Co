@@ -269,7 +269,13 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
         disabled={submitting}
         className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02] disabled:opacity-60 sm:w-auto"
       >
-        {submitting ? "Sending..." : ("Request a quote" && <>Request a quote <Send className="h-4 w-4" /></>)}
+        {submitting ? (
+          "Sending..."
+        ) : (
+          <>
+            Request a quote <Send className="h-4 w-4" />
+          </>
+        )}
       </button>
     </form>
   );
