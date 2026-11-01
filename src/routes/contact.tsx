@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Phone, Mail, Send, MapPin, Clock, MessageCircle } from "lucide-react";
-import { useState } from "react";
+import { useState, useRef } from "react";
+import { submitEnquiry } from "@/lib/enquiries.functions";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
 
@@ -24,6 +25,9 @@ export const Route = createFileRoute("/contact")({
 function Contact() {
   const { service } = Route.useSearch();
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const sendingRef = useRef(false);
   const whatsappHref = service
     ? `https://wa.me/27833359097?text=${encodeURIComponent(`Hi Buildify Co., I'm interested in: ${service}`)}`
     : "https://wa.me/27833359097";
@@ -98,7 +102,34 @@ function Contact() {
 
           <div className="lg:col-span-3">
             <form
-              onSubmit={(e) => { e.preventDefault(); setSent(true); }}
+              onSubmit={async (e) => {
+                e.preventDefault();
+                if (sendingRef.current) return;
+                const form = e.currentTarget;
+                const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
+                sendingRef.current = true;
+                setSending(true);
+                setError(null);
+                try {
+                  await submitEnquiry({
+                    name: data.name.trim(),
+                    email: data.email.trim(),
+                    services: [data.service.trim() || "General enquiry"],
+                    description: data.subject.trim() ? `${data.subject.trim()}\n${data.message.trim()}` : data.message.trim(),
+                    contactMethod: "email",
+                    business: "",
+                    phone: "",
+                    budget: "",
+                  });
+                  setSent(true);
+                  form.reset();
+                } catch {
+                  setError("Something went wrong while sending your message. Please try again, or contact us directly on 083 335 9097.");
+                } finally {
+                  sendingRef.current = false;
+                  setSending(false);
+                }
+              }}
               className="rounded-3xl border border-border bg-card/40 p-8 md:p-10 space-y-5"
             >
               <div className="grid gap-5 md:grid-cols-2">
@@ -118,17 +149,27 @@ function Contact() {
                   id="message"
                   rows={5}
                   required
+                  minLength={20}
                   defaultValue={service ? `Hi Buildify Co., I'm interested in your ${service}. Please get in touch to discuss.` : ""}
                   className="mt-2 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 resize-none"
                   placeholder="Tell us about your project..."
                 />
               </div>
+              {error && (
+                <div role="alert" className="rounded-xl border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive">
+                  {error}
+                </div>
+              )}
               <button
                 type="submit"
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02] disabled:opacity-60"
-                disabled={sent}
+                disabled={sending || sent}
               >
-                {sent ? "Message sent — we'll be in touch ✓" : (<>Send message <Send className="h-4 w-4" /></>)}
+                {sent
+                  ? "Message sent — we'll be in touch ✓"
+                  : sending
+                    ? "Sending..."
+                    : (<>Send message <Send className="h-4 w-4" /></>)}
               </button>
             </form>
           </div>
