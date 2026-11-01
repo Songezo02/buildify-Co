@@ -1,54 +1,52 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Globe, Code2, Wrench, ArrowRight, Check, Smartphone, Search, Database } from "lucide-react";
+import { useState, useRef } from "react";
+import { ArrowRight, Check, Smartphone, Search, Database } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
-import salonImg from "@/assets/industry-salon.jpg";
-import restaurantImg from "@/assets/industry-restaurant.jpg";
-import bnbImg from "@/assets/industry-bnb.jpg";
-import logisticsImg from "@/assets/industry-logistics.jpg";
-import doctorImg from "@/assets/industry-doctor.jpg";
+import { ServiceDialog } from "@/components/ServiceDialog";
+import { QuoteForm } from "@/components/QuoteForm";
+import {
+  CATEGORIES,
+  SERVICES,
+  INDUSTRY_PACKAGES,
+  MAINTENANCE_PLANS,
+  type Service,
+  type ServiceCategory,
+} from "@/lib/services.catalog";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
       { title: "Services — Buildify Co." },
-      { name: "description", content: "Buildify Co. builds websites, applications and provides ongoing maintenance — tailored to founders and growing teams." },
+      {
+        name: "description",
+        content:
+          "Explore Buildify Co.'s full digital services catalogue: websites, e-commerce, custom software, booking systems, SEO, maintenance plans and more. Request a quote online.",
+      },
       { property: "og:title", content: "Services — Buildify Co." },
-      { property: "og:description", content: "Web, app and maintenance services from Buildify Co." },
+      {
+        property: "og:description",
+        content:
+          "Websites, online stores, custom software, automation, security and care plans — request a quote from Buildify Co.",
+      },
     ],
   }),
   component: Services,
 });
 
 function Services() {
-  const main = [
-    {
-      icon: Globe,
-      title: "Website Development",
-      body: "Marketing sites, landing pages, portfolios and content platforms. Fast, accessible, SEO-ready and beautifully typeset.",
-      points: ["Custom design systems", "SEO & performance", "CMS integration", "Analytics setup"],
-    },
-    {
-      icon: Code2,
-      title: "Application Development",
-      body: "Full-stack web applications, dashboards, SaaS products and internal tools — built on modern, reliable foundations.",
-      points: ["Authentication & roles", "Databases & APIs", "Payments integration", "Realtime features"],
-    },
-    {
-      icon: Wrench,
-      title: "Maintenance & Support",
-      body: "We don't disappear after launch. Monitoring, updates, security patching and ongoing feature work on a steady cadence.",
-      points: ["24/7 monitoring", "Security updates", "Bug fixes & tweaks", "Monthly retainers"],
-    },
-  ];
+  const [filter, setFilter] = useState<"all" | ServiceCategory>("all");
+  const [activeService, setActiveService] = useState<Service | null>(null);
+  const [preselected, setPreselected] = useState<string[]>([]);
+  const quoteRef = useRef<HTMLDivElement>(null);
 
-  const pricing = [
-    { industry: "Salons", price: "R1 800", image: salonImg, blurb: "Booking-ready sites for stylists and beauty studios." },
-    { industry: "Healthcare Professional Website", price: "R2 400", image: doctorImg, blurb: "Patient-friendly sites for doctors and private practices." },
-    { industry: "Restaurants", price: "R2 650", image: restaurantImg, blurb: "Menus, reservations and brand storytelling." },
-    { industry: "BnBs & Guesthouses", price: "R3 700", image: bnbImg, blurb: "Showcase rooms and capture direct bookings." },
-    { industry: "Logistics Companies", price: "R3 900", image: logisticsImg, blurb: "Fleet, services and quote-request workflows." },
-  ];
+  const filtered = SERVICES.filter((s) => filter === "all" || s.category === filter);
+
+  const requestQuote = (service: Service) => {
+    setPreselected([service.name]);
+    setActiveService(null);
+    quoteRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+  };
 
   const extras = [
     { icon: Smartphone, title: "Mobile-first", body: "Every build is responsive by default." },
@@ -86,38 +84,159 @@ function Services() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-20">
-        <div className="grid gap-6 lg:grid-cols-3">
-          {main.map((s) => (
-            <Link
-              key={s.title}
-              to="/contact"
-              search={{ service: s.title }}
+      {/* Introduction */}
+      <section className="mx-auto max-w-7xl px-6 pt-16 md:pt-20">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="font-mono text-xs uppercase tracking-widest text-accent">Digital Solutions</div>
+          <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold tracking-tight">
+            Digital Solutions Built <span className="text-gradient-purple">Around Your Business</span>
+          </h2>
+          <p className="mt-5 text-muted-foreground leading-relaxed">
+            From professional websites to custom software, online stores, and ongoing technical support, Buildify Co.
+            helps businesses establish, improve, and grow their digital presence.
+          </p>
+        </div>
+
+        {/* Category filters */}
+        <div
+          className="mx-auto mt-10 flex flex-wrap justify-center gap-2"
+          role="group"
+          aria-label="Filter services by category"
+        >
+          {CATEGORIES.map((c) => {
+            const active = filter === c.id;
+            return (
+              <button
+                key={c.id}
+                type="button"
+                aria-pressed={active}
+                onClick={() => setFilter(c.id)}
+                className={`rounded-full border px-4 py-2 text-sm font-medium transition ${
+                  active
+                    ? "border-accent bg-accent/15 text-accent"
+                    : "border-border text-muted-foreground hover:border-accent/40 hover:text-foreground"
+                }`}
+              >
+                {c.label}
+              </button>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* Service cards */}
+      <section className="mx-auto max-w-7xl px-6 py-14 md:py-16">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {filtered.map((s) => (
+            <div
+              key={s.id}
               data-reveal-card
               className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 p-8 transition hover:bg-card"
             >
               <div className="grid h-14 w-14 place-items-center rounded-2xl bg-gradient-primary shadow-glow">
                 <s.icon className="h-7 w-7 text-primary-foreground" />
               </div>
-              <h2 className="mt-6 font-display text-2xl font-bold">{s.title}</h2>
-              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.body}</p>
-              <ul className="mt-6 space-y-2.5 text-sm">
-                {s.points.map((p) => (
-                  <li key={p} className="flex items-start gap-2.5">
-                    <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
-                    <span>{p}</span>
-                  </li>
-                ))}
-              </ul>
-              <div className="mt-6 inline-flex items-center gap-2 text-sm font-semibold text-accent">
-                Request this service <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              <h2 className="mt-6 font-display text-2xl font-bold">{s.name}</h2>
+              <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.short}</p>
+              <div className="mt-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">{s.priceLabel}</div>
+              <div className="mt-6 flex flex-wrap items-center gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setActiveService(s)}
+                  className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-semibold text-foreground transition hover:border-accent/50 hover:text-accent"
+                >
+                  Learn more
+                </button>
+                <button
+                  type="button"
+                  onClick={() => requestQuote(s)}
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-accent"
+                >
+                  Request a quote <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                </button>
               </div>
               <div className="absolute -bottom-16 -right-16 h-40 w-40 rounded-full bg-accent/10 blur-3xl transition group-hover:bg-accent/20" />
-            </Link>
+            </div>
           ))}
         </div>
       </section>
 
+      {/* Maintenance care plans */}
+      <section id="care-plans" className="border-t border-border/60 bg-card/30">
+        <div className="mx-auto max-w-7xl px-6 py-20">
+          <div className="flex flex-col items-center text-center">
+            <div className="font-mono text-xs uppercase tracking-widest text-accent">Care Plans</div>
+            <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold tracking-tight">
+              Monthly <span className="text-gradient-purple">maintenance plans</span>
+            </h2>
+            <p className="mt-4 max-w-2xl text-muted-foreground">
+              Keep your website healthy after launch. Recurring monthly plans — pricing is set per client, so request a
+              quote and we'll match a plan to your site.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {MAINTENANCE_PLANS.map((plan) => (
+              <div
+                key={plan.id}
+                data-reveal-card
+                className={`relative flex flex-col rounded-3xl border p-8 transition ${
+                  plan.popular ? "border-accent/60 bg-card" : "border-border bg-card/40 hover:bg-card"
+                }`}
+              >
+                {plan.popular && (
+                  <div className="absolute -top-3 left-8 rounded-full bg-gradient-accent px-3 py-1 font-mono text-xs uppercase tracking-widest text-accent-foreground">
+                    Most popular
+                  </div>
+                )}
+                <h3 className="font-display text-2xl font-bold">{plan.name}</h3>
+                <p className="mt-2 text-sm text-muted-foreground">{plan.tagline}</p>
+                <div className="mt-6 border-t border-border/60 pt-5">
+                  <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Monthly</span>
+                  <div className="mt-1 font-display text-3xl font-bold text-gradient-purple">
+                    {plan.monthlyPrice !== null ? `R${plan.monthlyPrice.toLocaleString("en-ZA")}` : "Request a quote"}
+                  </div>
+                </div>
+                <ul className="mt-6 flex-1 space-y-2.5 text-sm">
+                  {plan.features.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5">
+                      <Check className="mt-0.5 h-4 w-4 flex-shrink-0 text-accent" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+                <button
+                  type="button"
+                  onClick={() =>
+                    requestQuote({
+                      id: `plan-${plan.id}`,
+                      name: `${plan.name} maintenance plan`,
+                      category: "maintenance",
+                      icon: Check,
+                      short: "",
+                      body: "",
+                      benefits: [],
+                      features: [],
+                      suitable: [],
+                      priceLabel: "Monthly care plan",
+                    })
+                  }
+                  className="mt-8 inline-flex items-center justify-center gap-2 rounded-full bg-gradient-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-glow transition hover:scale-105"
+                >
+                  Request this plan <ArrowRight className="h-4 w-4" />
+                </button>
+              </div>
+            ))}
+          </div>
+
+          <p className="mt-8 text-center text-xs text-muted-foreground">
+            Care plans are recurring monthly services; website builds are once-off projects. Hosting and domain fees are
+            third-party costs, billed separately.
+          </p>
+        </div>
+      </section>
+
+      {/* Industry pricing (existing packages) */}
       <section className="border-t border-border/60 bg-background">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="flex flex-col items-center text-center">
@@ -131,7 +250,7 @@ function Services() {
           </div>
 
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {pricing.map((p) => (
+            {INDUSTRY_PACKAGES.map((p) => (
               <Link
                 key={p.industry}
                 to="/contact"
@@ -168,7 +287,26 @@ function Services() {
         </div>
       </section>
 
-      <section className="border-t border-border/60 bg-card/30">
+      {/* Quotation request form */}
+      <section id="quote" ref={quoteRef} className="border-t border-border/60 bg-card/30 scroll-mt-20">
+        <div className="mx-auto max-w-4xl px-6 py-20">
+          <div className="flex flex-col items-center text-center">
+            <div className="font-mono text-xs uppercase tracking-widest text-accent">Get a quote</div>
+            <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold tracking-tight">
+              Tell us what <span className="text-gradient-purple">you need.</span>
+            </h2>
+            <p className="mt-4 max-w-2xl text-muted-foreground">
+              Fill in the form below and we'll come back with a clear, plain-language scope, price and timeline — within
+              one business day.
+            </p>
+          </div>
+          <div className="mt-12">
+            <QuoteForm preselected={preselected} />
+          </div>
+        </div>
+      </section>
+
+      <section className="border-t border-border/60 bg-background">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-center">Standard with every project</h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
@@ -195,6 +333,8 @@ function Services() {
       </section>
 
       <SiteFooter />
+
+      <ServiceDialog service={activeService} onClose={() => setActiveService(null)} onRequestQuote={requestQuote} />
     </div>
   );
 }
