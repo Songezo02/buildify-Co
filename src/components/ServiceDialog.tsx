@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { X, Check, Info } from "lucide-react";
-import type { Service } from "@/lib/services.catalog";
+import { CATEGORIES, type Service } from "@/lib/services.catalog";
 
 interface ServiceDialogProps {
   service: Service | null;
