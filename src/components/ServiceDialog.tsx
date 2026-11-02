@@ -50,7 +50,9 @@ export function ServiceDialog({ service, onClose, onRequestQuote }: ServiceDialo
               <Icon className="h-6 w-6 text-primary-foreground" />
             </div>
             <div>
-              <div className="font-mono text-xs uppercase tracking-widest text-accent">{service.name}</div>
+              <div className="font-mono text-xs uppercase tracking-widest text-accent">
+                {CATEGORIES.find((c) => c.id === service.category)?.label ?? "Service"}
+              </div>
               <h2 id="service-dialog-title" className="mt-1 font-display text-2xl font-bold">
                 {service.name}
               </h2>
