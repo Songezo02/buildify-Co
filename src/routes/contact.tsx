@@ -112,14 +112,16 @@ function Contact() {
                 setError(null);
                 try {
                   await submitEnquiry({
-                    name: data.name.trim(),
-                    email: data.email.trim(),
-                    services: [data.service.trim() || "General enquiry"],
-                    description: data.subject.trim() ? `${data.subject.trim()}\n${data.message.trim()}` : data.message.trim(),
-                    contactMethod: "email",
-                    business: "",
-                    phone: "",
-                    budget: "",
+                    data: {
+                      name: data.name.trim(),
+                      email: data.email.trim(),
+                      services: [data.service.trim() || "General enquiry"],
+                      description: data.subject.trim() ? `${data.subject.trim()}\n${data.message.trim()}` : data.message.trim(),
+                      contactMethod: "email",
+                      business: "",
+                      phone: "",
+                      budget: "",
+                    },
                   });
                   setSent(true);
                   form.reset();

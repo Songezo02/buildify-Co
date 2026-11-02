@@ -69,14 +69,16 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
     setFailed(false);
     try {
       await submitEnquiry({
-        name: data.name.trim(),
-        business: data.business.trim(),
-        email: data.email.trim(),
-        phone: data.phone.trim(),
-        services: selected,
-        budget: data.budget.trim(),
-        description: data.description.trim(),
-        contactMethod,
+        data: {
+          name: data.name.trim(),
+          business: data.business.trim(),
+          email: data.email.trim(),
+          phone: data.phone.trim(),
+          services: selected,
+          budget: data.budget.trim(),
+          description: data.description.trim(),
+          contactMethod,
+        },
       });
       setSubmitted(true);
       form.reset();
