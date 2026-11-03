@@ -79,7 +79,8 @@ function Services() {
             Everything you need <span className="text-gradient-purple">to ship.</span>
           </h1>
           <p className="mt-6 text-lg text-white/85 max-w-2xl mx-auto leading-relaxed">
-            From a one-page launch site to a long-term application partnership — pick the support level that matches your growth.
+            From a one-page launch site to a long-term application partnership — pick the support
+            level that matches your growth.
           </p>
         </div>
       </section>
@@ -87,13 +88,17 @@ function Services() {
       {/* Introduction */}
       <section className="mx-auto max-w-7xl px-6 pt-16 md:pt-20">
         <div className="mx-auto max-w-3xl text-center">
-          <div className="font-mono text-xs uppercase tracking-widest text-accent">Digital Solutions</div>
+          <div className="font-mono text-xs uppercase tracking-widest text-accent">
+            Digital Solutions
+          </div>
           <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold tracking-tight">
-            Digital Solutions Built <span className="text-gradient-purple">Around Your Business</span>
+            Digital Solutions Built{" "}
+            <span className="text-gradient-purple">Around Your Business</span>
           </h2>
           <p className="mt-5 text-muted-foreground leading-relaxed">
-            From professional websites to custom software, online stores, and ongoing technical support, Buildify Co.
-            helps businesses establish, improve, and grow their digital presence.
+            From professional websites to custom software, online stores, and ongoing technical
+            support, Buildify Co. helps businesses establish, improve, and grow their digital
+            presence.
           </p>
         </div>
 
@@ -138,7 +143,9 @@ function Services() {
               </div>
               <h2 className="mt-6 font-display text-2xl font-bold">{s.name}</h2>
               <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{s.short}</p>
-              <div className="mt-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">{s.priceLabel}</div>
+              <div className="mt-5 font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                {s.priceLabel}
+              </div>
               <div className="mt-6 flex flex-wrap items-center gap-3 pt-2">
                 <button
                   type="button"
@@ -152,7 +159,8 @@ function Services() {
                   onClick={() => requestQuote(s)}
                   className="inline-flex items-center gap-2 text-sm font-semibold text-accent"
                 >
-                  Request a quote <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+                  Request a quote{" "}
+                  <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                 </button>
               </div>
               <div className="absolute -bottom-16 -right-16 h-40 w-40 rounded-full bg-accent/10 blur-3xl transition group-hover:bg-accent/20" />
@@ -165,13 +173,15 @@ function Services() {
       <section id="care-plans" className="border-t border-border/60 bg-card/30">
         <div className="mx-auto max-w-7xl px-6 py-20">
           <div className="flex flex-col items-center text-center">
-            <div className="font-mono text-xs uppercase tracking-widest text-accent">Care Plans</div>
+            <div className="font-mono text-xs uppercase tracking-widest text-accent">
+              Care Plans
+            </div>
             <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold tracking-tight">
               Monthly <span className="text-gradient-purple">maintenance plans</span>
             </h2>
             <p className="mt-4 max-w-2xl text-muted-foreground">
-              Keep your website healthy after launch. Recurring monthly plans — pricing is set per client, so request a
-              quote and we'll match a plan to your site.
+              Keep your website healthy after launch. Recurring monthly plans — pricing is set per
+              client, so request a quote and we'll match a plan to your site.
             </p>
           </div>
 
@@ -181,7 +191,9 @@ function Services() {
                 key={plan.id}
                 data-reveal-card
                 className={`relative flex flex-col rounded-3xl border p-8 transition ${
-                  plan.popular ? "border-accent/60 bg-card" : "border-border bg-card/40 hover:bg-card"
+                  plan.popular
+                    ? "border-accent/60 bg-card"
+                    : "border-border bg-card/40 hover:bg-card"
                 }`}
               >
                 {plan.popular && (
@@ -192,9 +204,13 @@ function Services() {
                 <h3 className="font-display text-2xl font-bold">{plan.name}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{plan.tagline}</p>
                 <div className="mt-6 border-t border-border/60 pt-5">
-                  <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Monthly</span>
+                  <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                    Monthly
+                  </span>
                   <div className="mt-1 font-display text-3xl font-bold text-gradient-purple">
-                    {plan.monthlyPrice !== null ? `R${plan.monthlyPrice.toLocaleString("en-ZA")}` : "Request a quote"}
+                    {plan.monthlyPrice !== null
+                      ? `R${plan.monthlyPrice.toLocaleString("en-ZA")}`
+                      : "Request a quote"}
                   </div>
                 </div>
                 <ul className="mt-6 flex-1 space-y-2.5 text-sm">
@@ -230,8 +246,8 @@ function Services() {
           </div>
 
           <p className="mt-8 text-center text-xs text-muted-foreground">
-            Care plans are recurring monthly services; website builds are once-off projects. Hosting and domain fees are
-            third-party costs, billed separately.
+            Care plans are recurring monthly services; website builds are once-off projects. Hosting
+            and domain fees are third-party costs, billed separately.
           </p>
         </div>
       </section>
@@ -245,7 +261,8 @@ function Services() {
               Websites by <span className="text-gradient-purple">industry</span>
             </h2>
             <p className="mt-4 max-w-2xl text-muted-foreground">
-              Transparent starting prices for the industries we know best. Every build is custom — these are launch-ready packages.
+              Transparent starting prices for the industries we know best. Every build is custom —
+              these are launch-ready packages.
             </p>
           </div>
 
@@ -273,8 +290,12 @@ function Services() {
                   <h3 className="font-display text-xl font-bold">{p.industry}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.blurb}</p>
                   <div className="mt-6 flex items-end justify-between border-t border-border/60 pt-4">
-                    <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">From</span>
-                    <span className="font-display text-3xl font-bold text-gradient-purple">{p.price}</span>
+                    <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                      From
+                    </span>
+                    <span className="font-display text-3xl font-bold text-gradient-purple">
+                      {p.price}
+                    </span>
                   </div>
                 </div>
               </Link>
@@ -288,16 +309,22 @@ function Services() {
       </section>
 
       {/* Quotation request form */}
-      <section id="quote" ref={quoteRef} className="border-t border-border/60 bg-card/30 scroll-mt-20">
+      <section
+        id="quote"
+        ref={quoteRef}
+        className="border-t border-border/60 bg-card/30 scroll-mt-20"
+      >
         <div className="mx-auto max-w-4xl px-6 py-20">
           <div className="flex flex-col items-center text-center">
-            <div className="font-mono text-xs uppercase tracking-widest text-accent">Get a quote</div>
+            <div className="font-mono text-xs uppercase tracking-widest text-accent">
+              Get a quote
+            </div>
             <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold tracking-tight">
               Tell us what <span className="text-gradient-purple">you need.</span>
             </h2>
             <p className="mt-4 max-w-2xl text-muted-foreground">
-              Fill in the form below and we'll come back with a clear, plain-language scope, price and timeline — within
-              one business day.
+              Fill in the form below and we'll come back with a clear, plain-language scope, price
+              and timeline — within one business day.
             </p>
           </div>
           <div className="mt-12">
@@ -308,10 +335,16 @@ function Services() {
 
       <section className="border-t border-border/60 bg-background">
         <div className="mx-auto max-w-7xl px-6 py-20">
-          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-center">Standard with every project</h2>
+          <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight text-center">
+            Standard with every project
+          </h2>
           <div className="mt-12 grid gap-6 md:grid-cols-3">
             {extras.map((e) => (
-              <div key={e.title} data-reveal-card className="rounded-2xl border border-border bg-background/40 p-6">
+              <div
+                key={e.title}
+                data-reveal-card
+                className="rounded-2xl border border-border bg-background/40 p-6"
+              >
                 <e.icon className="h-6 w-6 text-accent" />
                 <h3 className="mt-4 font-display text-xl font-bold">{e.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{e.body}</p>
@@ -322,8 +355,12 @@ function Services() {
       </section>
 
       <section className="mx-auto max-w-7xl px-6 py-20 text-center">
-        <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">Ready to start?</h2>
-        <p className="mt-3 text-muted-foreground">Tell us about your project and we'll come back with a clear plan.</p>
+        <h2 className="font-display text-3xl md:text-4xl font-bold tracking-tight">
+          Ready to start?
+        </h2>
+        <p className="mt-3 text-muted-foreground">
+          Tell us about your project and we'll come back with a clear plan.
+        </p>
         <Link
           to="/contact"
           className="mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow hover:scale-105 transition"
@@ -334,7 +371,11 @@ function Services() {
 
       <SiteFooter />
 
-      <ServiceDialog service={activeService} onClose={() => setActiveService(null)} onRequestQuote={requestQuote} />
+      <ServiceDialog
+        service={activeService}
+        onClose={() => setActiveService(null)}
+        onRequestQuote={requestQuote}
+      />
     </div>
   );
 }

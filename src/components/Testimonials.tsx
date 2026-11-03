@@ -1,10 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { useServerFn } from "@tanstack/react-start";
 import { Star, CheckCircle2 } from "lucide-react";
-import {
-  listApprovedTestimonials,
-  submitTestimonial,
-} from "@/lib/testimonials.functions";
+import { listApprovedTestimonials, submitTestimonial } from "@/lib/testimonials.functions";
 
 const AVATAR_PALETTE = ["#2563EB", "#16A34A", "#DC2626", "#9333EA", "#0EA5E9", "#F97316"];
 
@@ -330,9 +327,7 @@ export function TestimonialsAndFeedback() {
                 <Field label="Your testimonial">
                   <textarea
                     value={message}
-                    onChange={(e) =>
-                      setMessage(e.target.value.slice(0, MAX_MESSAGE))
-                    }
+                    onChange={(e) => setMessage(e.target.value.slice(0, MAX_MESSAGE))}
                     placeholder="Tell us what it was like working with Buildify Co."
                     className="form-input resize-y"
                     style={{ minHeight: 80 }}

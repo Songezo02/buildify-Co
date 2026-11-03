@@ -63,18 +63,16 @@ export const submitTestimonial = createServerFn({ method: "POST" })
     return { ok: true, id: row.id };
   });
 
-export const listApprovedTestimonials = createServerFn({ method: "GET" }).handler(
-  async () => {
-    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
-    const { data, error } = await supabaseAdmin
-      .from("testimonials")
-      .select("id, name, business, location, message, rating, created_at")
-      .eq("approved", true)
-      .order("created_at", { ascending: false });
-    if (error) throw new Error(error.message);
-    return { items: data ?? [] };
-  },
-);
+export const listApprovedTestimonials = createServerFn({ method: "GET" }).handler(async () => {
+  const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+  const { data, error } = await supabaseAdmin
+    .from("testimonials")
+    .select("id, name, business, location, message, rating, created_at")
+    .eq("approved", true)
+    .order("created_at", { ascending: false });
+  if (error) throw new Error(error.message);
+  return { items: data ?? [] };
+});
 
 const adminAuthSchema = z.object({ password: z.string().min(1) });
 
@@ -108,10 +106,7 @@ export const adminUpdateTestimonial = createServerFn({ method: "POST" })
     const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
 
     if (data.action === "delete" || data.action === "reject") {
-      const { error } = await supabaseAdmin
-        .from("testimonials")
-        .delete()
-        .eq("id", data.id);
+      const { error } = await supabaseAdmin.from("testimonials").delete().eq("id", data.id);
       if (error) throw new Error(error.message);
     } else if (data.action === "approve") {
       const { error } = await supabaseAdmin
