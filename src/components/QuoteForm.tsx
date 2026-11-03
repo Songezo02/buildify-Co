@@ -48,6 +48,8 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
   const validate = (data: Record<string, string>): string[] => {
     const errs: string[] = [];
     if (!data.name.trim()) errs.push("Please enter your full name.");
+    if (!data.business.trim()) errs.push("Please enter your business name.");
+    if (!data.phone.trim()) errs.push("Please enter your phone number.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()))
       errs.push("Please enter a valid email address.");
     if (selected.length === 0) errs.push("Please select at least one service.");
@@ -140,11 +142,12 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
             htmlFor="q-business"
             className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
           >
-            Business name (optional)
+            Business name <span className="text-accent">*</span>
           </label>
           <input
             id="q-business"
             name="business"
+            required
             className="mt-2 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
           />
         </div>
@@ -171,12 +174,13 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
             htmlFor="q-phone"
             className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
           >
-            Phone number (optional)
+            Phone number <span className="text-accent">*</span>
           </label>
           <input
             id="q-phone"
             name="phone"
             type="tel"
+            required
             className="mt-2 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20"
           />
         </div>
