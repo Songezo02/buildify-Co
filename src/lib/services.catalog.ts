@@ -5,7 +5,6 @@ import {
   Wrench,
   ShoppingCart,
   CalendarCheck,
-  ShieldCheck,
   Search,
   Bot,
   RefreshCw,
@@ -13,15 +12,9 @@ import {
   BarChart3,
   Smartphone,
   Database,
-  Mail,
   Accessibility,
-  MessagesSquare,
 } from "lucide-react";
-import salonImg from "@/assets/industry-salon.jpg";
-import doctorImg from "@/assets/industry-doctor.jpg";
-import restaurantImg from "@/assets/industry-restaurant.jpg";
-import bnbImg from "@/assets/industry-bnb.jpg";
-import logisticsImg from "@/assets/industry-logistics.jpg";
+
 
 /**
  * Central, maintainable service catalogue for Buildify Co.
@@ -205,36 +198,6 @@ export const SERVICES: Service[] = [
     ],
     suitable: ["Any business with a live website", "Teams without technical staff"],
     priceLabel: "Monthly plans — see care plans below",
-  },
-  {
-    id: "website-security",
-    name: "Website Security",
-    category: "maintenance",
-    icon: ShieldCheck,
-    short:
-      "HTTPS, secure authentication, validation and access control for your site or application.",
-    body: "We help businesses improve the security of their websites and applications with practical, well-scoped hardening work.",
-    benefits: ["Protected logins", "Safer forms", "Cleaner dependencies", "Recovery plan in place"],
-    features: [
-      "HTTPS and SSL configuration assistance",
-      "Secure authentication implementation",
-      "Form validation and input sanitisation",
-      "Access control",
-      "Security configuration reviews",
-      "Dependency updates",
-      "Backup and recovery planning",
-      "Basic security assessments of authorised systems",
-    ],
-    suitable: [
-      "Sites collecting customer data",
-      "Applications with logins",
-      "Businesses with compliance concerns",
-    ],
-    priceLabel: "Request a quote",
-    notes: [
-      "No website can be guaranteed completely secure — we reduce risk and improve defences.",
-      "We do not offer penetration testing or security certifications unless the relevant capability and authorisation are in place.",
-    ],
   },
   {
     id: "seo",
@@ -456,34 +419,6 @@ export const SERVICES: Service[] = [
     ],
   },
   {
-    id: "email-setup",
-    name: "Email and Business Communication Setup",
-    category: "automation",
-    icon: Mail,
-    short: "Business email, form notifications, confirmations and professional email templates.",
-    body: "We help businesses communicate professionally with customers — from business email setup to automated confirmations and enquiry notifications.",
-    benefits: [
-      "Professional communication",
-      "Enquiries reach your inbox",
-      "Automated confirmations",
-      "Consistent templates",
-    ],
-    features: [
-      "Business email setup assistance",
-      "Contact form email notifications",
-      "Transactional email integration",
-      "Email templates",
-      "Booking confirmations",
-      "Order confirmations",
-      "Enquiry notifications",
-    ],
-    suitable: ["Any business using contact forms", "Online stores", "Booking-based businesses"],
-    priceLabel: "Request a quote",
-    notes: [
-      "External email services charge their own costs and require configuration — we disclose these up front.",
-    ],
-  },
-  {
     id: "accessibility-ux",
     name: "Website Accessibility and User Experience",
     category: "websites",
@@ -515,75 +450,6 @@ export const SERVICES: Service[] = [
     notes: [
       "We work to WCAG guidance, but we don't claim formal accessibility certification without an appropriate assessment.",
     ],
-  },
-  {
-    id: "consultation-support",
-    name: "Digital Consultation and Technical Support",
-    category: "maintenance",
-    icon: MessagesSquare,
-    short: "Plain-language advice on what to build, what to fix and what it should cost.",
-    body: "We help businesses choose suitable technology solutions — planning, requirements analysis, recommendations and clear scopes before any code is written.",
-    benefits: [
-      "Plain-language advice",
-      "Clear scope before you commit",
-      "Right tool for the job",
-      "Realistic budgets",
-    ],
-    features: [
-      "Website project planning",
-      "Software requirements analysis",
-      "Technology recommendations",
-      "Website improvement consultations",
-      "Technical troubleshooting",
-      "Digital workflow recommendations",
-      "Project scope and quotation preparation",
-    ],
-    suitable: [
-      "Businesses unsure where to start",
-      "Projects needing scoping",
-      "Anyone needing a second opinion",
-    ],
-    priceLabel: "Request a quote",
-  },
-];
-
-export interface IndustryPackage {
-  industry: string;
-  price: string;
-  image: string;
-  blurb: string;
-}
-
-export const INDUSTRY_PACKAGES: IndustryPackage[] = [
-  {
-    industry: "Salons",
-    price: "R1 800",
-    image: salonImg,
-    blurb: "Booking-ready sites for stylists and beauty studios.",
-  },
-  {
-    industry: "Healthcare Professional Website",
-    price: "R2 400",
-    image: doctorImg,
-    blurb: "Patient-friendly sites for doctors and private practices.",
-  },
-  {
-    industry: "Restaurants",
-    price: "R2 650",
-    image: restaurantImg,
-    blurb: "Menus, reservations and brand storytelling.",
-  },
-  {
-    industry: "BnBs & Guesthouses",
-    price: "R3 700",
-    image: bnbImg,
-    blurb: "Showcase rooms and capture direct bookings.",
-  },
-  {
-    industry: "Logistics Companies",
-    price: "R3 900",
-    image: logisticsImg,
-    blurb: "Fleet, services and quote-request workflows.",
   },
 ];
 

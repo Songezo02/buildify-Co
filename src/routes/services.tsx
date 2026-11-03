@@ -8,7 +8,6 @@ import { QuoteForm } from "@/components/QuoteForm";
 import {
   CATEGORIES,
   SERVICES,
-  INDUSTRY_PACKAGES,
   MAINTENANCE_PLANS,
   type Service,
   type ServiceCategory,
@@ -248,62 +247,6 @@ function Services() {
           <p className="mt-8 text-center text-xs text-muted-foreground">
             Care plans are recurring monthly services; website builds are once-off projects. Hosting
             and domain fees are third-party costs, billed separately.
-          </p>
-        </div>
-      </section>
-
-      {/* Industry pricing (existing packages) */}
-      <section className="border-t border-border/60 bg-background">
-        <div className="mx-auto max-w-7xl px-6 py-20">
-          <div className="flex flex-col items-center text-center">
-            <div className="font-mono text-xs uppercase tracking-widest text-accent">Pricing</div>
-            <h2 className="mt-3 font-display text-3xl md:text-5xl font-bold tracking-tight">
-              Websites by <span className="text-gradient-purple">industry</span>
-            </h2>
-            <p className="mt-4 max-w-2xl text-muted-foreground">
-              Transparent starting prices for the industries we know best. Every build is custom —
-              these are launch-ready packages.
-            </p>
-          </div>
-
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {INDUSTRY_PACKAGES.map((p) => (
-              <Link
-                key={p.industry}
-                to="/contact"
-                search={{ service: `${p.industry} website (${p.price})` }}
-                data-reveal-card
-                className="group relative flex flex-col overflow-hidden rounded-3xl border border-border bg-card/40 transition hover:bg-card"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <img
-                    src={p.image}
-                    alt={`${p.industry} website example by Buildify Co.`}
-                    width={800}
-                    height={600}
-                    loading="lazy"
-                    className="h-full w-full object-cover transition duration-500 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
-                </div>
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="font-display text-xl font-bold">{p.industry}</h3>
-                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.blurb}</p>
-                  <div className="mt-6 flex items-end justify-between border-t border-border/60 pt-4">
-                    <span className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
-                      From
-                    </span>
-                    <span className="font-display text-3xl font-bold text-gradient-purple">
-                      {p.price}
-                    </span>
-                  </div>
-                </div>
-              </Link>
-            ))}
-          </div>
-
-          <p className="mt-10 text-center text-xs text-muted-foreground">
-            Prices exclude domain &amp; hosting. Custom industries quoted on request.
           </p>
         </div>
       </section>
