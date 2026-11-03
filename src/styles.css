@@ -67,9 +67,9 @@
   --input: oklch(0.25 0.02 280);
   --ring: oklch(0.55 0.22 295);
 
-  --font-display: "Space Grotesk", system-ui, sans-serif;
-  --font-sans: "Inter", system-ui, sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --font-display: sans-serif;
+  --font-sans: sans-serif;
+  --font-mono: sans-serif;
 
   --gradient-hero: radial-gradient(ellipse at top, oklch(0.25 0.12 295 / 0.5), transparent 60%),
     radial-gradient(ellipse at bottom right, oklch(0.4 0.15 155 / 0.18), transparent 60%);

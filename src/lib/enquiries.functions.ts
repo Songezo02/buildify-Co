@@ -6,9 +6,16 @@ const submitSchema = z.object({
   business: z.string().trim().max(120).optional().default(""),
   email: z.string().trim().email("Please enter a valid email address.").max(200),
   phone: z.string().trim().max(30).optional().default(""),
-  services: z.array(z.string().trim().min(1).max(120)).min(1, "Please select at least one service.").max(10),
+  services: z
+    .array(z.string().trim().min(1).max(120))
+    .min(1, "Please select at least one service.")
+    .max(10),
   budget: z.string().trim().max(40).optional().default(""),
-  description: z.string().trim().min(20, "Please describe your project in at least 20 characters.").max(3000),
+  description: z
+    .string()
+    .trim()
+    .min(20, "Please describe your project in at least 20 characters.")
+    .max(3000),
   contactMethod: z.enum(["email", "phone", "whatsapp"]),
 });
 

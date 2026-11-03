@@ -27,7 +27,10 @@ export function SiteHeader() {
               key={l.to}
               to={l.to}
               className="rounded-full px-4 py-2 text-sm font-medium text-muted-foreground transition hover:text-foreground hover:bg-secondary"
-              activeProps={{ className: "rounded-full px-4 py-2 text-sm font-medium text-foreground bg-secondary" }}
+              activeProps={{
+                className:
+                  "rounded-full px-4 py-2 text-sm font-medium text-foreground bg-secondary",
+              }}
               activeOptions={{ exact: true }}
             >
               {l.label}
@@ -61,7 +64,10 @@ export function SiteHeader() {
                 to={l.to}
                 onClick={() => setOpen(false)}
                 className="rounded-lg px-4 py-3 text-base font-medium text-muted-foreground hover:bg-secondary hover:text-foreground"
-                activeProps={{ className: "rounded-lg px-4 py-3 text-base font-medium text-foreground bg-secondary" }}
+                activeProps={{
+                  className:
+                    "rounded-lg px-4 py-3 text-base font-medium text-foreground bg-secondary",
+                }}
                 activeOptions={{ exact: true }}
               >
                 {l.label}

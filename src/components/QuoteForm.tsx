@@ -48,9 +48,11 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
   const validate = (data: Record<string, string>): string[] => {
     const errs: string[] = [];
     if (!data.name.trim()) errs.push("Please enter your full name.");
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim())) errs.push("Please enter a valid email address.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()))
+      errs.push("Please enter a valid email address.");
     if (selected.length === 0) errs.push("Please select at least one service.");
-    if (data.description.trim().length < 20) errs.push("Please describe your project in at least 20 characters.");
+    if (data.description.trim().length < 20)
+      errs.push("Please describe your project in at least 20 characters.");
     return errs;
   };
 
@@ -99,8 +101,8 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
         </div>
         <h3 className="mt-6 font-display text-2xl font-bold">Request received!</h3>
         <p className="mx-auto mt-3 max-w-md text-sm text-muted-foreground">
-          Thank you — your quotation request has been saved and we've been notified. We'll get back to you within one
-          business day.
+          Thank you — your quotation request has been saved and we've been notified. We'll get back
+          to you within one business day.
         </p>
         <button
           onClick={() => setSubmitted(false)}
@@ -120,7 +122,10 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
     >
       <div className="grid gap-5 md:grid-cols-2">
         <div>
-          <label htmlFor="q-name" className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          <label
+            htmlFor="q-name"
+            className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+          >
             Full name <span className="text-accent">*</span>
           </label>
           <input
@@ -131,7 +136,10 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
           />
         </div>
         <div>
-          <label htmlFor="q-business" className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          <label
+            htmlFor="q-business"
+            className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+          >
             Business name (optional)
           </label>
           <input
@@ -144,7 +152,10 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
 
       <div className="grid gap-5 md:grid-cols-2">
         <div>
-          <label htmlFor="q-email" className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          <label
+            htmlFor="q-email"
+            className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+          >
             Email address <span className="text-accent">*</span>
           </label>
           <input
@@ -156,7 +167,10 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
           />
         </div>
         <div>
-          <label htmlFor="q-phone" className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+          <label
+            htmlFor="q-phone"
+            className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+          >
             Phone number (optional)
           </label>
           <input
@@ -172,7 +186,11 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
         <legend className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
           Services required <span className="text-accent">*</span>
         </legend>
-        <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Select the services you need">
+        <div
+          className="mt-3 flex flex-wrap gap-2"
+          role="group"
+          aria-label="Select the services you need"
+        >
           {SERVICES.map((s) => {
             const active = selected.includes(s.name);
             return (
@@ -195,7 +213,10 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
       </fieldset>
 
       <div>
-        <label htmlFor="q-budget" className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+        <label
+          htmlFor="q-budget"
+          className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+        >
           Estimated budget (optional)
         </label>
         <select
@@ -213,7 +234,10 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
       </div>
 
       <div>
-        <label htmlFor="q-description" className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+        <label
+          htmlFor="q-description"
+          className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+        >
           Project description <span className="text-accent">*</span>
         </label>
         <textarea
@@ -231,7 +255,11 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
         <legend className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
           Preferred contact method <span className="text-accent">*</span>
         </legend>
-        <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Preferred contact method">
+        <div
+          className="mt-3 flex flex-wrap gap-2"
+          role="group"
+          aria-label="Preferred contact method"
+        >
           {CONTACT_METHODS.map((m) => (
             <button
               key={m.id}
@@ -261,8 +289,12 @@ export function QuoteForm({ preselected = [] }: QuoteFormProps) {
       )}
 
       {failed && (
-        <div role="alert" className="rounded-xl border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive">
-          Something went wrong while sending your request. Please try again, or contact us directly on 083 335 9097.
+        <div
+          role="alert"
+          className="rounded-xl border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive"
+        >
+          Something went wrong while sending your request. Please try again, or contact us directly
+          on 083 335 9097.
         </div>
       )}
 

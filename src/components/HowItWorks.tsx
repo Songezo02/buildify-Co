@@ -44,7 +44,10 @@ export function HowItWorks() {
         <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
           How it works
         </div>
-        <h2 className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight hiw-fade" style={{ animationDelay: "0.08s" }}>
+        <h2
+          className="mt-3 font-display text-4xl md:text-5xl font-bold tracking-tight hiw-fade"
+          style={{ animationDelay: "0.08s" }}
+        >
           Simple from day one.
         </h2>
       </div>

@@ -65,9 +65,15 @@ export const SERVICES: Service[] = [
     name: "Website Design and Development",
     category: "websites",
     icon: Globe,
-    short: "Responsive, modern websites tailored to each business — from landing pages to corporate sites.",
+    short:
+      "Responsive, modern websites tailored to each business — from landing pages to corporate sites.",
     body: "We design and build responsive, modern websites tailored to each business. Whether you need a simple landing page or a full corporate presence, every build is fast, accessible and SEO-ready.",
-    benefits: ["Custom design, no templates", "Fast and mobile-responsive", "SEO-friendly structure", "Built-in lead capture"],
+    benefits: [
+      "Custom design, no templates",
+      "Fast and mobile-responsive",
+      "SEO-friendly structure",
+      "Built-in lead capture",
+    ],
     features: [
       "Business websites",
       "Landing pages",
@@ -79,7 +85,11 @@ export const SERVICES: Service[] = [
       "WhatsApp integration",
       "SEO-friendly structure",
     ],
-    suitable: ["Any business needing an online presence", "Startups", "Professionals and personal brands"],
+    suitable: [
+      "Any business needing an online presence",
+      "Startups",
+      "Professionals and personal brands",
+    ],
     priceLabel: "From R1 800 (once-off, per industry package)",
   },
   {
@@ -102,7 +112,12 @@ export const SERVICES: Service[] = [
       "Order notifications",
       "Sales reporting",
     ],
-    suitable: ["Retailers", "Crafters and makers", "Wholesalers", "Service businesses selling packages"],
+    suitable: [
+      "Retailers",
+      "Crafters and makers",
+      "Wholesalers",
+      "Service businesses selling packages",
+    ],
     priceLabel: "Request a quote",
     notes: [
       "Payment options are only displayed as available on your store once the payment integration has been implemented and tested.",
@@ -114,9 +129,15 @@ export const SERVICES: Service[] = [
     name: "Custom Web Applications and Business Systems",
     category: "software",
     icon: Code2,
-    short: "Customised software for business operations — portals, dashboards, CRM, invoicing and more.",
+    short:
+      "Customised software for business operations — portals, dashboards, CRM, invoicing and more.",
     body: "We build customised software solutions that match how your business actually works — from client portals to full management systems, all backed by a secure database.",
-    benefits: ["Built around your workflows", "Secure role-based access", "Scales with your business", "Custom integrations"],
+    benefits: [
+      "Built around your workflows",
+      "Secure role-based access",
+      "Scales with your business",
+      "Custom integrations",
+    ],
     features: [
       "Client portals",
       "Admin dashboards",
@@ -138,7 +159,12 @@ export const SERVICES: Service[] = [
     icon: CalendarCheck,
     short: "Accept and manage online bookings with calendars, confirmations and notifications.",
     body: "We help businesses accept and manage bookings online — appointments, reservations and availability handled automatically so you spend less time on the phone.",
-    benefits: ["Bookings while you sleep", "Fewer no-shows with confirmations", "One calendar for everything", "Optional deposits"],
+    benefits: [
+      "Bookings while you sleep",
+      "Fewer no-shows with confirmations",
+      "One calendar for everything",
+      "Optional deposits",
+    ],
     features: [
       "Appointment scheduling",
       "Availability calendars",
@@ -157,9 +183,15 @@ export const SERVICES: Service[] = [
     name: "Website Maintenance and Care Plans",
     category: "maintenance",
     icon: Wrench,
-    short: "Ongoing updates, security checks, backups and support after launch — on a steady cadence.",
+    short:
+      "Ongoing updates, security checks, backups and support after launch — on a steady cadence.",
     body: "We don't disappear after launch. Our care plans keep your website updated, monitored and supported month after month, with three levels to choose from.",
-    benefits: ["Site stays healthy", "Security patches applied", "Backups configured", "A real person to talk to"],
+    benefits: [
+      "Site stays healthy",
+      "Security patches applied",
+      "Backups configured",
+      "A real person to talk to",
+    ],
     features: [
       "Website updates",
       "Bug fixes",
@@ -179,7 +211,8 @@ export const SERVICES: Service[] = [
     name: "Website Security",
     category: "maintenance",
     icon: ShieldCheck,
-    short: "HTTPS, secure authentication, validation and access control for your site or application.",
+    short:
+      "HTTPS, secure authentication, validation and access control for your site or application.",
     body: "We help businesses improve the security of their websites and applications with practical, well-scoped hardening work.",
     benefits: ["Protected logins", "Safer forms", "Cleaner dependencies", "Recovery plan in place"],
     features: [
@@ -192,7 +225,11 @@ export const SERVICES: Service[] = [
       "Backup and recovery planning",
       "Basic security assessments of authorised systems",
     ],
-    suitable: ["Sites collecting customer data", "Applications with logins", "Businesses with compliance concerns"],
+    suitable: [
+      "Sites collecting customer data",
+      "Applications with logins",
+      "Businesses with compliance concerns",
+    ],
     priceLabel: "Request a quote",
     notes: [
       "No website can be guaranteed completely secure — we reduce risk and improve defences.",
@@ -206,7 +243,12 @@ export const SERVICES: Service[] = [
     icon: Search,
     short: "Technical SEO foundations, local SEO and search performance reporting.",
     body: "We improve how easily search engines can find, understand and rank your website — with solid technical foundations and reporting you can actually read.",
-    benefits: ["Easier to find on Google", "Better page structure", "Local visibility", "Clear reporting"],
+    benefits: [
+      "Easier to find on Google",
+      "Better page structure",
+      "Local visibility",
+      "Clear reporting",
+    ],
     features: [
       "Technical SEO foundations",
       "Page titles and meta descriptions",
@@ -220,7 +262,9 @@ export const SERVICES: Service[] = [
     ],
     suitable: ["Local businesses", "Service providers", "Anyone competing in search"],
     priceLabel: "Request a quote",
-    notes: ["Search rankings and traffic growth are not guaranteed — we follow best practice and measure what changes."],
+    notes: [
+      "Search rankings and traffic growth are not guaranteed — we follow best practice and measure what changes.",
+    ],
   },
   {
     id: "ai-automation",
@@ -229,7 +273,12 @@ export const SERVICES: Service[] = [
     icon: Bot,
     short: "Website chatbots, FAQ assistants, lead capture and automated enquiry workflows.",
     body: "We automate customer interactions and repetitive tasks — chat assistants that answer common questions, capture leads and route enquiries to the right place.",
-    benefits: ["Instant answers for visitors", "Leads captured automatically", "Enquiries routed correctly", "Fewer repetitive tasks"],
+    benefits: [
+      "Instant answers for visitors",
+      "Leads captured automatically",
+      "Enquiries routed correctly",
+      "Fewer repetitive tasks",
+    ],
     features: [
       "Website AI chatbots",
       "Frequently asked questions assistants",
@@ -241,7 +290,11 @@ export const SERVICES: Service[] = [
       "AI-powered knowledge assistants",
       "API integrations",
     ],
-    suitable: ["Businesses with frequent common questions", "Lead-driven websites", "Teams drowning in email"],
+    suitable: [
+      "Businesses with frequent common questions",
+      "Lead-driven websites",
+      "Teams drowning in email",
+    ],
     priceLabel: "Request a quote",
     notes: [
       "Some services require third-party subscriptions or API keys — we identify these up front, including their costs.",
@@ -255,7 +308,12 @@ export const SERVICES: Service[] = [
     icon: RefreshCw,
     short: "Modernise existing websites, improve speed, usability and mobile responsiveness.",
     body: "We modernise existing websites and improve how they feel and perform — layout, speed, accessibility and navigation.",
-    benefits: ["Fresh modern look", "Faster load times", "Better mobile experience", "Easier navigation"],
+    benefits: [
+      "Fresh modern look",
+      "Faster load times",
+      "Better mobile experience",
+      "Easier navigation",
+    ],
     features: [
       "Website redesigns",
       "Mobile responsiveness improvements",
@@ -268,7 +326,9 @@ export const SERVICES: Service[] = [
     ],
     suitable: ["Sites that look dated", "Slow-loading websites", "Poor mobile experiences"],
     priceLabel: "Request a quote",
-    notes: ["We improve real-world speed, but we don't guarantee a particular performance score or loading time."],
+    notes: [
+      "We improve real-world speed, but we don't guarantee a particular performance score or loading time.",
+    ],
   },
   {
     id: "hosting-domains",
@@ -277,7 +337,12 @@ export const SERVICES: Service[] = [
     icon: Cloud,
     short: "Domain registration, DNS, deployment, SSL and renewal reminders — handled for you.",
     body: "We help clients publish and maintain their websites online — domains, DNS, hosting and SSL taken care of, with reminders before anything expires.",
-    benefits: ["We handle the technical setup", "Renewal reminders", "SSL configured", "Deployment support"],
+    benefits: [
+      "We handle the technical setup",
+      "Renewal reminders",
+      "SSL configured",
+      "Deployment support",
+    ],
     features: [
       "Domain registration assistance",
       "DNS configuration",
@@ -288,7 +353,11 @@ export const SERVICES: Service[] = [
       "Deployment troubleshooting",
       "Email domain configuration assistance",
     ],
-    suitable: ["New websites going live", "Businesses migrating hosts", "Expired or misconfigured domains"],
+    suitable: [
+      "New websites going live",
+      "Businesses migrating hosts",
+      "Expired or misconfigured domains",
+    ],
     priceLabel: "Request a quote",
     notes: [
       "Hosting and domain registrar fees are third-party costs, billed separately from our services — we clearly separate the two.",
@@ -299,9 +368,15 @@ export const SERVICES: Service[] = [
     name: "Website Analytics and Reporting",
     category: "automation",
     icon: BarChart3,
-    short: "Know how your website performs — visitors, traffic sources, popular pages and conversions.",
+    short:
+      "Know how your website performs — visitors, traffic sources, popular pages and conversions.",
     body: "We help clients understand how their websites perform with clean analytics setups and plain-language reporting.",
-    benefits: ["Know your visitors", "See what's working", "Track conversions", "Monthly summaries"],
+    benefits: [
+      "Know your visitors",
+      "See what's working",
+      "Track conversions",
+      "Monthly summaries",
+    ],
     features: [
       "Google Analytics integration",
       "Google Search Console setup",
@@ -314,7 +389,9 @@ export const SERVICES: Service[] = [
     ],
     suitable: ["Marketing-focused businesses", "Online stores", "Anyone running campaigns"],
     priceLabel: "Request a quote",
-    notes: ["We take a privacy-conscious approach to analytics and add appropriate consent mechanisms where legally required."],
+    notes: [
+      "We take a privacy-conscious approach to analytics and add appropriate consent mechanisms where legally required.",
+    ],
   },
   {
     id: "mobile-apps",
@@ -323,7 +400,12 @@ export const SERVICES: Service[] = [
     icon: Smartphone,
     short: "Android and cross-platform mobile apps with authentication, APIs and databases.",
     body: "We develop custom mobile applications where they genuinely suit the business — from Android apps to cross-platform products.",
-    benefits: ["Your brand on customers' phones", "Native-feeling experience", "Push notifications", "Backed by real data"],
+    benefits: [
+      "Your brand on customers' phones",
+      "Native-feeling experience",
+      "Push notifications",
+      "Backed by real data",
+    ],
     features: [
       "Android applications",
       "Cross-platform mobile applications",
@@ -346,7 +428,12 @@ export const SERVICES: Service[] = [
     icon: Database,
     short: "Database design, modelling, APIs and integration with your existing business systems.",
     body: "We design and build the data layer behind serious business tools — secure, validated and integrated with the systems you already use.",
-    benefits: ["One source of truth", "Secure access control", "Connects your systems", "Room to grow"],
+    benefits: [
+      "One source of truth",
+      "Secure access control",
+      "Connects your systems",
+      "Room to grow",
+    ],
     features: [
       "Database design",
       "MySQL integration",
@@ -358,9 +445,15 @@ export const SERVICES: Service[] = [
       "Database performance improvements",
       "Integration with existing business systems",
     ],
-    suitable: ["Businesses consolidating data", "Teams replacing manual records", "Existing apps needing a backend"],
+    suitable: [
+      "Businesses consolidating data",
+      "Teams replacing manual records",
+      "Existing apps needing a backend",
+    ],
     priceLabel: "Request a quote",
-    notes: ["Database credentials and unrestricted access are never exposed in frontend code — all access is server-side and controlled."],
+    notes: [
+      "Database credentials and unrestricted access are never exposed in frontend code — all access is server-side and controlled.",
+    ],
   },
   {
     id: "email-setup",
@@ -369,7 +462,12 @@ export const SERVICES: Service[] = [
     icon: Mail,
     short: "Business email, form notifications, confirmations and professional email templates.",
     body: "We help businesses communicate professionally with customers — from business email setup to automated confirmations and enquiry notifications.",
-    benefits: ["Professional communication", "Enquiries reach your inbox", "Automated confirmations", "Consistent templates"],
+    benefits: [
+      "Professional communication",
+      "Enquiries reach your inbox",
+      "Automated confirmations",
+      "Consistent templates",
+    ],
     features: [
       "Business email setup assistance",
       "Contact form email notifications",
@@ -381,7 +479,9 @@ export const SERVICES: Service[] = [
     ],
     suitable: ["Any business using contact forms", "Online stores", "Booking-based businesses"],
     priceLabel: "Request a quote",
-    notes: ["External email services charge their own costs and require configuration — we disclose these up front."],
+    notes: [
+      "External email services charge their own costs and require configuration — we disclose these up front.",
+    ],
   },
   {
     id: "accessibility-ux",
@@ -390,7 +490,12 @@ export const SERVICES: Service[] = [
     icon: Accessibility,
     short: "Make your website easier to navigate and use for every visitor.",
     body: "We make websites easier to navigate and use — clearer typography, better contrast, keyboard-friendly forms and layouts that work for everyone.",
-    benefits: ["Usable by more people", "Clearer navigation", "Readable content", "Inclusive forms"],
+    benefits: [
+      "Usable by more people",
+      "Clearer navigation",
+      "Readable content",
+      "Inclusive forms",
+    ],
     features: [
       "Keyboard navigation improvements",
       "Accessible form labels",
@@ -401,9 +506,15 @@ export const SERVICES: Service[] = [
       "Clear navigation and calls to action",
       "Accessibility checks against relevant WCAG guidance",
     ],
-    suitable: ["Public-facing businesses", "Government-adjacent services", "Sites with older audiences"],
+    suitable: [
+      "Public-facing businesses",
+      "Government-adjacent services",
+      "Sites with older audiences",
+    ],
     priceLabel: "Request a quote",
-    notes: ["We work to WCAG guidance, but we don't claim formal accessibility certification without an appropriate assessment."],
+    notes: [
+      "We work to WCAG guidance, but we don't claim formal accessibility certification without an appropriate assessment.",
+    ],
   },
   {
     id: "consultation-support",
@@ -412,7 +523,12 @@ export const SERVICES: Service[] = [
     icon: MessagesSquare,
     short: "Plain-language advice on what to build, what to fix and what it should cost.",
     body: "We help businesses choose suitable technology solutions — planning, requirements analysis, recommendations and clear scopes before any code is written.",
-    benefits: ["Plain-language advice", "Clear scope before you commit", "Right tool for the job", "Realistic budgets"],
+    benefits: [
+      "Plain-language advice",
+      "Clear scope before you commit",
+      "Right tool for the job",
+      "Realistic budgets",
+    ],
     features: [
       "Website project planning",
       "Software requirements analysis",
@@ -422,7 +538,11 @@ export const SERVICES: Service[] = [
       "Digital workflow recommendations",
       "Project scope and quotation preparation",
     ],
-    suitable: ["Businesses unsure where to start", "Projects needing scoping", "Anyone needing a second opinion"],
+    suitable: [
+      "Businesses unsure where to start",
+      "Projects needing scoping",
+      "Anyone needing a second opinion",
+    ],
     priceLabel: "Request a quote",
   },
 ];
@@ -435,11 +555,36 @@ export interface IndustryPackage {
 }
 
 export const INDUSTRY_PACKAGES: IndustryPackage[] = [
-  { industry: "Salons", price: "R1 800", image: salonImg, blurb: "Booking-ready sites for stylists and beauty studios." },
-  { industry: "Healthcare Professional Website", price: "R2 400", image: doctorImg, blurb: "Patient-friendly sites for doctors and private practices." },
-  { industry: "Restaurants", price: "R2 650", image: restaurantImg, blurb: "Menus, reservations and brand storytelling." },
-  { industry: "BnBs & Guesthouses", price: "R3 700", image: bnbImg, blurb: "Showcase rooms and capture direct bookings." },
-  { industry: "Logistics Companies", price: "R3 900", image: logisticsImg, blurb: "Fleet, services and quote-request workflows." },
+  {
+    industry: "Salons",
+    price: "R1 800",
+    image: salonImg,
+    blurb: "Booking-ready sites for stylists and beauty studios.",
+  },
+  {
+    industry: "Healthcare Professional Website",
+    price: "R2 400",
+    image: doctorImg,
+    blurb: "Patient-friendly sites for doctors and private practices.",
+  },
+  {
+    industry: "Restaurants",
+    price: "R2 650",
+    image: restaurantImg,
+    blurb: "Menus, reservations and brand storytelling.",
+  },
+  {
+    industry: "BnBs & Guesthouses",
+    price: "R3 700",
+    image: bnbImg,
+    blurb: "Showcase rooms and capture direct bookings.",
+  },
+  {
+    industry: "Logistics Companies",
+    price: "R3 900",
+    image: logisticsImg,
+    blurb: "Fleet, services and quote-request workflows.",
+  },
 ];
 
 export interface MaintenancePlan {

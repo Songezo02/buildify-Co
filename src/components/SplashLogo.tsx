@@ -22,12 +22,59 @@ export function SplashLogo() {
             </linearGradient>
           </defs>
           {/* base ground line */}
-          <line x1="20" y1="170" x2="180" y2="170" stroke="oklch(0.78 0.2 155)" strokeWidth="2" opacity="0.5" />
+          <line
+            x1="20"
+            y1="170"
+            x2="180"
+            y2="170"
+            stroke="oklch(0.78 0.2 155)"
+            strokeWidth="2"
+            opacity="0.5"
+          />
           {/* Bricks dropping in sequence to build a skyline */}
-          <rect x="30" y="120" width="32" height="50" rx="3" fill="url(#splashGrad)" className="brick" style={{ animationDelay: "0.1s" }} />
-          <rect x="68" y="80" width="32" height="90" rx="3" fill="url(#splashGrad)" opacity="0.9" className="brick" style={{ animationDelay: "0.45s" }} />
-          <rect x="106" y="40" width="32" height="130" rx="3" fill="url(#splashGrad)" opacity="0.8" className="brick" style={{ animationDelay: "0.8s" }} />
-          <rect x="144" y="100" width="32" height="70" rx="3" fill="url(#splashGrad)" opacity="0.7" className="brick" style={{ animationDelay: "1.15s" }} />
+          <rect
+            x="30"
+            y="120"
+            width="32"
+            height="50"
+            rx="3"
+            fill="url(#splashGrad)"
+            className="brick"
+            style={{ animationDelay: "0.1s" }}
+          />
+          <rect
+            x="68"
+            y="80"
+            width="32"
+            height="90"
+            rx="3"
+            fill="url(#splashGrad)"
+            opacity="0.9"
+            className="brick"
+            style={{ animationDelay: "0.45s" }}
+          />
+          <rect
+            x="106"
+            y="40"
+            width="32"
+            height="130"
+            rx="3"
+            fill="url(#splashGrad)"
+            opacity="0.8"
+            className="brick"
+            style={{ animationDelay: "0.8s" }}
+          />
+          <rect
+            x="144"
+            y="100"
+            width="32"
+            height="70"
+            rx="3"
+            fill="url(#splashGrad)"
+            opacity="0.7"
+            className="brick"
+            style={{ animationDelay: "1.15s" }}
+          />
         </svg>
         <div className="text-center">
           <div className="font-display text-4xl md:text-5xl font-bold tracking-tight">

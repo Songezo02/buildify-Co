@@ -2,10 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useServerFn } from "@tanstack/react-start";
 import { useState } from "react";
 import { Star, Check, X, LogOut } from "lucide-react";
-import {
-  adminListTestimonials,
-  adminUpdateTestimonial,
-} from "@/lib/testimonials.functions";
+import { adminListTestimonials, adminUpdateTestimonial } from "@/lib/testimonials.functions";
 
 export const Route = createFileRoute("/admin/testimonials")({
   head: () => ({
@@ -121,8 +118,18 @@ function AdminTestimonials() {
           </div>
         )}
 
-        <Section title={`Pending review (${pending.length})`} rows={pending} act={act} mode="pending" />
-        <Section title={`Approved (${approved.length})`} rows={approved} act={act} mode="approved" />
+        <Section
+          title={`Pending review (${pending.length})`}
+          rows={pending}
+          act={act}
+          mode="pending"
+        />
+        <Section
+          title={`Approved (${approved.length})`}
+          rows={approved}
+          act={act}
+          mode="approved"
+        />
       </main>
     </div>
   );
@@ -141,7 +148,9 @@ function Section({
 }) {
   return (
     <section className="mb-12">
-      <h2 className="font-display text-lg font-bold uppercase tracking-widest text-accent">{title}</h2>
+      <h2 className="font-display text-lg font-bold uppercase tracking-widest text-accent">
+        {title}
+      </h2>
       {rows.length === 0 ? (
         <p className="mt-4 text-sm text-muted-foreground">Nothing here.</p>
       ) : (

@@ -14,7 +14,11 @@ export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
       { title: "Contact — Buildify Co." },
-      { name: "description", content: "Get in touch with Buildify Co. — call or WhatsApp 083 335 9097, or email songezogwabavu@gmail.com." },
+      {
+        name: "description",
+        content:
+          "Get in touch with Buildify Co. — call or WhatsApp 083 335 9097, or email songezogwabavu@gmail.com.",
+      },
       { property: "og:title", content: "Contact Buildify Co." },
       { property: "og:description", content: "Reach Buildify Co. by phone, WhatsApp or email." },
     ],
@@ -36,17 +40,18 @@ function Contact() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-        <section className="mx-auto max-w-5xl px-6 py-20 md:py-28 text-center">
-          <div className="font-mono text-xs uppercase tracking-widest text-accent">Contact</div>
-          <h1 className="mt-4 font-display text-5xl md:text-7xl font-bold tracking-tighter text-balance text-white">
-            Let's <span className="text-gradient-purple">talk.</span>
-          </h1>
-          <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto">
-            Whether it's a brand-new build or help maintaining an existing product we'd love to hear from you.
-          </p>
-        </section>
+      <section className="mx-auto max-w-5xl px-6 py-20 md:py-28 text-center">
+        <div className="font-mono text-xs uppercase tracking-widest text-accent">Contact</div>
+        <h1 className="mt-4 font-display text-5xl md:text-7xl font-bold tracking-tighter text-balance text-white">
+          Let's <span className="text-gradient-purple">talk.</span>
+        </h1>
+        <p className="mt-6 text-lg text-muted-foreground max-w-xl mx-auto">
+          Whether it's a brand-new build or help maintaining an existing product we'd love to hear
+          from you.
+        </p>
+      </section>
 
-        <section className="relative mx-auto max-w-7xl px-6 pb-16 md:pb-24 pt-0">
+      <section className="relative mx-auto max-w-7xl px-6 pb-16 md:pb-24 pt-0">
         <div className="grid gap-10 lg:grid-cols-5">
           <div className="lg:col-span-2 space-y-6">
             <a
@@ -60,31 +65,49 @@ function Contact() {
                 <MessageCircle className="h-5 w-5 text-accent-foreground" />
               </div>
               <div>
-                <div className="font-mono text-xs uppercase tracking-widest text-accent">WhatsApp</div>
+                <div className="font-mono text-xs uppercase tracking-widest text-accent">
+                  WhatsApp
+                </div>
                 <div className="mt-1 font-display text-xl font-bold">+27 83 335 9097</div>
                 <div className="mt-1 text-sm text-muted-foreground">Chat with us instantly</div>
               </div>
             </a>
 
-            <a href="tel:+27833359097" data-reveal-card className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:bg-card">
+            <a
+              href="tel:+27833359097"
+              data-reveal-card
+              className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:bg-card"
+            >
               <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-primary shadow-glow">
                 <Phone className="h-5 w-5 text-primary-foreground" />
               </div>
               <div>
-                <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Cell</div>
+                <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  Cell
+                </div>
                 <div className="mt-1 font-display text-xl font-bold">083 335 9097</div>
                 <div className="mt-1 text-sm text-muted-foreground">Tap to call</div>
               </div>
             </a>
 
-            <a href="mailto:songezogwabavu@gmail.com" data-reveal-card className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:bg-card">
+            <a
+              href="mailto:songezogwabavu@gmail.com"
+              data-reveal-card
+              className="flex items-start gap-4 rounded-2xl border border-border bg-card/40 p-6 transition hover:bg-card"
+            >
               <div className="grid h-12 w-12 flex-shrink-0 place-items-center rounded-xl bg-gradient-accent shadow-accent-glow">
                 <Mail className="h-5 w-5 text-accent-foreground" />
               </div>
               <div className="min-w-0">
-                <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Email</div>
-                <div className="mt-1 font-display text-xl font-bold break-all">songezogwabavu@gmail.com</div>
-                <div className="mt-1 text-sm text-muted-foreground">Replies within 1 business day</div>
+                <div className="font-mono text-xs uppercase tracking-widest text-muted-foreground">
+                  Email
+                </div>
+                <div className="mt-1 font-display text-xl font-bold break-all">
+                  songezogwabavu@gmail.com
+                </div>
+                <div className="mt-1 text-sm text-muted-foreground">
+                  Replies within 1 business day
+                </div>
               </div>
             </a>
 
@@ -106,7 +129,10 @@ function Contact() {
                 e.preventDefault();
                 if (sendingRef.current) return;
                 const form = e.currentTarget;
-                const data = Object.fromEntries(new FormData(form).entries()) as Record<string, string>;
+                const data = Object.fromEntries(new FormData(form).entries()) as Record<
+                  string,
+                  string
+                >;
                 sendingRef.current = true;
                 setSending(true);
                 setError(null);
@@ -116,7 +142,9 @@ function Contact() {
                       name: data.name.trim(),
                       email: data.email.trim(),
                       services: [data.service.trim() || "General enquiry"],
-                      description: data.subject.trim() ? `${data.subject.trim()}\n${data.message.trim()}` : data.message.trim(),
+                      description: data.subject.trim()
+                        ? `${data.subject.trim()}\n${data.message.trim()}`
+                        : data.message.trim(),
                       contactMethod: "email",
                       business: "",
                       phone: "",
@@ -126,7 +154,9 @@ function Contact() {
                   setSent(true);
                   form.reset();
                 } catch {
-                  setError("Something went wrong while sending your message. Please try again, or contact us directly on 083 335 9097.");
+                  setError(
+                    "Something went wrong while sending your message. Please try again, or contact us directly on 083 335 9097.",
+                  );
                 } finally {
                   sendingRef.current = false;
                   setSending(false);
@@ -146,19 +176,31 @@ function Contact() {
               />
               <Field label="Subject" id="subject" />
               <div>
-                <label htmlFor="message" className="font-mono text-xs uppercase tracking-widest text-muted-foreground">Message</label>
+                <label
+                  htmlFor="message"
+                  className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+                >
+                  Message
+                </label>
                 <textarea
                   id="message"
                   rows={5}
                   required
                   minLength={20}
-                  defaultValue={service ? `Hi Buildify Co., I'm interested in your ${service}. Please get in touch to discuss.` : ""}
+                  defaultValue={
+                    service
+                      ? `Hi Buildify Co., I'm interested in your ${service}. Please get in touch to discuss.`
+                      : ""
+                  }
                   className="mt-2 w-full rounded-xl border border-border bg-background/60 px-4 py-3 text-sm text-foreground outline-none transition focus:border-accent focus:ring-2 focus:ring-accent/20 resize-none"
                   placeholder="Tell us about your project..."
                 />
               </div>
               {error && (
-                <div role="alert" className="rounded-xl border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive">
+                <div
+                  role="alert"
+                  className="rounded-xl border border-destructive/50 bg-destructive/10 p-4 text-sm text-destructive"
+                >
                   {error}
                 </div>
               )}
@@ -167,11 +209,15 @@ function Contact() {
                 className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-primary px-7 py-4 text-base font-semibold text-primary-foreground shadow-glow transition hover:scale-[1.02] disabled:opacity-60"
                 disabled={sending || sent}
               >
-                {sent
-                  ? "Message sent — we'll be in touch ✓"
-                  : sending
-                    ? "Sending..."
-                    : (<>Send message <Send className="h-4 w-4" /></>)}
+                {sent ? (
+                  "Message sent — we'll be in touch ✓"
+                ) : sending ? (
+                  "Sending..."
+                ) : (
+                  <>
+                    Send message <Send className="h-4 w-4" />
+                  </>
+                )}
               </button>
             </form>
           </div>
@@ -200,7 +246,12 @@ function Field({
 }) {
   return (
     <div>
-      <label htmlFor={id} className="font-mono text-xs uppercase tracking-widest text-muted-foreground">{label}</label>
+      <label
+        htmlFor={id}
+        className="font-mono text-xs uppercase tracking-widest text-muted-foreground"
+      >
+        {label}
+      </label>
       <input
         id={id}
         type={type}
