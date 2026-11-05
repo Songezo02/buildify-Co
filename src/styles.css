@@ -301,3 +301,7 @@
   .hiw-fade { opacity: 1; animation: none; }
   .hiw-card.is-active { transform: none; }
 }
+
+.about-background-video {
+  filter: brightness(0.75) contrast(1.08);
+}
