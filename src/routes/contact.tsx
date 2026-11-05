@@ -153,7 +153,8 @@ function Contact() {
                   });
                   setSent(true);
                   form.reset();
-                } catch {
+                } catch (e) {
+                  console.error("Contact submit failed:", e);
                   setError(
                     "Something went wrong while sending your message. Please try again, or contact us directly on 083 335 9097.",
                   );
@@ -184,6 +185,7 @@ function Contact() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={5}
                   required
                   minLength={20}
@@ -254,6 +256,7 @@ function Field({
       </label>
       <input
         id={id}
+        name={id}
         type={type}
         required={required}
         defaultValue={defaultValue}
