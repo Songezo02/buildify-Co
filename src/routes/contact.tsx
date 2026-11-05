@@ -185,6 +185,7 @@ function Contact() {
                 </label>
                 <textarea
                   id="message"
+                  name="message"
                   rows={5}
                   required
                   minLength={20}
@@ -255,6 +256,7 @@ function Field({
       </label>
       <input
         id={id}
+        name={id}
         type={type}
         required={required}
         defaultValue={defaultValue}
