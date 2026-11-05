@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Target, Heart, Rocket } from "lucide-react";
 import { SiteHeader } from "@/components/SiteHeader";
 import { SiteFooter } from "@/components/SiteFooter";
+import aboutVideo from "@/assets/about-office-background.mp4.asset.json";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -14,6 +15,8 @@ export const Route = createFileRoute("/about")({
       },
       { property: "og:title", content: "About Buildify Co." },
       { property: "og:description", content: "Meet the studio and its founder, Songezo Gwabavu." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: About,
@@ -34,8 +37,18 @@ function About() {
     <div className="min-h-screen bg-background text-foreground">
       <SiteHeader />
 
-      <section className="relative overflow-hidden bg-hero-gradient">
-        <div className="grid-bg absolute inset-0 opacity-40" />
+      <section className="relative overflow-hidden">
+        <video
+          className="about-background-video absolute inset-0 h-full w-full object-cover"
+          src={aboutVideo.url}
+          autoPlay
+          loop
+          muted
+          playsInline
+          preload="auto"
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-background/60" aria-hidden="true" />
         <div className="relative mx-auto max-w-5xl px-6 py-24 md:py-32 text-center">
           <div className="font-mono text-xs uppercase tracking-widest text-accent">About</div>
           <h1 className="mt-4 font-display text-5xl md:text-7xl font-bold tracking-tighter text-balance">
