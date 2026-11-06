@@ -6,7 +6,21 @@ import { adminListTestimonials, adminUpdateTestimonial } from "@/lib/testimonial
 
 export const Route = createFileRoute("/admin/testimonials")({
   head: () => ({
-    meta: [{ title: "Admin — Testimonials" }, { name: "robots", content: "noindex" }],
+    meta: [
+      { title: "Testimonial Moderation — Buildify Co." },
+      {
+        name: "description",
+        content: "Private testimonial moderation for the Buildify Co. website.",
+      },
+      { property: "og:title", content: "Testimonial Moderation — Buildify Co." },
+      {
+        property: "og:description",
+        content: "Private testimonial moderation for the Buildify Co. website.",
+      },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary" },
+      { name: "robots", content: "noindex" },
+    ],
   }),
   component: AdminTestimonials,
 });
