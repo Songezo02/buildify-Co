@@ -22,6 +22,8 @@ export const Route = createFileRoute("/")({
         content:
           "Websites, applications and ongoing maintenance from Buildify Co., founded by Songezo Gwabavu.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Home,

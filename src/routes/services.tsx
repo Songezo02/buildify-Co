@@ -28,6 +28,8 @@ export const Route = createFileRoute("/services")({
         content:
           "Websites, online stores, custom software, automation, security and care plans — request a quote from Buildify Co.",
       },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Services,

@@ -21,6 +21,8 @@ export const Route = createFileRoute("/contact")({
       },
       { property: "og:title", content: "Contact Buildify Co." },
       { property: "og:description", content: "Reach Buildify Co. by phone, WhatsApp or email." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: Contact,
