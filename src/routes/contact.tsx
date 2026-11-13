@@ -175,7 +175,7 @@ function Contact() {
                 label="Service of interest"
                 id="service"
                 defaultValue={service ?? ""}
-                placeholder="e.g. Salons website (R1 800)"
+                placeholder=" "
               />
               <Field label="Subject" id="subject" />
               <div>

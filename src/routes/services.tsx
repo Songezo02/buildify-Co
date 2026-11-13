@@ -269,7 +269,7 @@ function Services() {
             </h2>
             <p className="mt-4 max-w-2xl text-muted-foreground">
               Fill in the form below and we'll come back with a clear, plain-language scope, price
-              and timeline — within one business day.
+              and timeline within one business day.
             </p>
           </div>
           <div className="mt-12">

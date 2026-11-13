@@ -45,12 +45,13 @@ export const submitEnquiry = createServerFn({ method: "POST" })
 
     // Email notification (non-fatal — the enquiry is already stored).
     try {
-      const apiKey = process.env.RESEND_API_KEY;
-      if (apiKey) {
-        await fetch("https://api.resend.com/emails", {
+      if (!process.env.RESEND_API_KEY) {
+        console.error("RESEND_API_KEY is not set");
+      } else {
+        const res = await fetch("https://api.resend.com/emails", {
           method: "POST",
           headers: {
-            Authorization: `Bearer ${apiKey}`,
+            Authorization: `Bearer ${process.env.RESEND_API_KEY}`,
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
@@ -69,6 +70,8 @@ export const submitEnquiry = createServerFn({ method: "POST" })
             `,
           }),
         });
+
+        if (!res.ok) console.error("Resend error:", res.status, await res.text());
       }
     } catch (e) {
       console.error("Enquiry email notification failed:", e);
